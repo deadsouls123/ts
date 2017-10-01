@@ -1,0 +1,106 @@
+class{
+	//comment
+    private int f1;
+    protected int f2;
+    public int f3;
+    static int f4;
+    static protected int f5 = 2;
+    static void main(String[] args){
+        System.out.println(args.length);
+        System.out.println(Arrays.toString(args));
+        System.out.println(args);
+    }
+    void autoSubclass(Object obj){
+        autoSubclass("Test");
+    }
+    void newExpr(){
+        var s = new String("test");
+        s.chars();
+    }
+    void autoPrimitiveType(){
+        int i = 0;
+        long l = i;
+        float f = l;
+        double d = f;
+    }
+    void autoBox(Integer i){
+        autoBox(3);
+        int j = i;
+    }
+    void stringAutoCast(){
+        Object a = "a";
+        String ab = a + "b";
+    }
+    constructor(){
+        super();
+        this.method1();
+    }
+    constructor(String name){
+        
+    }
+    int method1(){
+        return 2;
+    }
+    void method2(){}
+    void decl(){
+        int i = 1;
+        var l = i;
+        var emptyMap = [:];
+        var map = [name:"kalang"];
+        var emptyList = [];
+        var list = ["item"];
+    }
+    void ifStmt(){
+        int i=0;
+        if(i==0) return;
+        if(i==1){
+            return;
+        }
+        if(i==1){
+            i=1;
+        }else{
+            i=0;
+        }
+    }
+    void forStmt(){
+        int s = 0;
+        for(int i=0;i<100;i++) s++;
+        for(int i=0;i<100;i++){
+            s++;
+        }
+    }
+    void whileStmt(){
+        int i;
+        while(i<10) i++;
+        while(i<20){i++;}
+    }
+    void invocation(){
+        invocation();
+        this.invocation();
+    }
+    void getField(){
+        f1 = 1;
+    }
+    void throwStmt() throws Exception{
+        throw new Exception("Test");
+    }
+    void questionExpr(){
+        var q = true;
+        var s = q ? "true" : "false";
+    }
+    void dynamicInvoke() throws Exception{
+        this->questionExpr();
+    }
+    void dynamicField() throws Exception{
+        this->f1;
+        this->f1 = 1;
+    }
+    
+    override public String toString(){
+        return "test";
+    }
+    public String classConst(){
+        return Base.class.getName();
+    }
+    
+}

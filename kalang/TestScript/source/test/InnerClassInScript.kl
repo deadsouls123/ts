@@ -1,0 +1,15 @@
+class Inner{
+    static class InnerInInner{
+        public String helloInnerInInner(){
+            return "InnerInInner";
+        }
+    }
+    public String hello(){
+        return "Inner";
+    }
+}
+
+var ic = new Inner();
+ic.hello();
+var icInIc = new Inner::InnerInInner();
+icInIc.helloInnerInInner();
