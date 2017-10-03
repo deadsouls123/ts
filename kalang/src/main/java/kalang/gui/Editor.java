@@ -2,10 +2,26 @@ package kalang.gui;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Date;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+
 import kalang.util.ClassExecutor;
 /**
  *
@@ -13,6 +29,7 @@ import kalang.util.ClassExecutor;
  */
 public class Editor extends javax.swing.JFrame {
 
+	File mFile = null;
     /**
      * Creates new form Editor
      */
@@ -37,6 +54,9 @@ public class Editor extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuTopFIle = new javax.swing.JMenu();
         menuExit = new javax.swing.JMenuItem();
+        menuNew = new javax.swing.JMenuItem();
+        menuOpen = new javax.swing.JMenuItem();
+        menuSave = new javax.swing.JMenuItem();
         menuTopRun = new javax.swing.JMenu();
         menuRun = new javax.swing.JMenuItem();
         menuTopView = new javax.swing.JMenu();
@@ -83,6 +103,30 @@ public class Editor extends javax.swing.JFrame {
                 menuExitActionPerformed(evt);
             }
         });
+        
+        menuNew.setText("New");
+        menuNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNewActionPerformed(evt);
+            }
+        });
+        
+        menuOpen.setText("Open");
+        menuOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOpenActionPerformed(evt);
+            }
+        });
+        
+        menuSave.setText("Save");
+        menuSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSaveActionPerformed(evt);
+            }
+        });
+        menuTopFIle.add(menuNew);
+        menuTopFIle.add(menuOpen);
+        menuTopFIle.add(menuSave);
         menuTopFIle.add(menuExit);
 
         jMenuBar1.add(menuTopFIle);
@@ -141,6 +185,68 @@ public class Editor extends javax.swing.JFrame {
     private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuExitActionPerformed
+    
+    private void menuNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNewActionPerformed
+    	String name = JOptionPane.showInputDialog("请输入文件名");
+    	File file = new File("workspace/" + name + ".cszz");
+        File dir = new File("workspace");
+        
+        if(!dir.exists()) {
+        	dir.mkdir();
+        }
+        if(!file.exists()) {
+        	try {
+				file.createNewFile();
+				mFile = file;
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.err.print("Create new file failed!!\n");
+			}
+        } else {
+        	System.err.print("File exist!\n");
+        }
+    }//GEN-LAST:event_menuNewActionPerformed
+    
+    private void menuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenActionPerformed
+    	JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(""));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Java", "cszz");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(new JPanel());
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        	codeArea.setText("");
+        	mFile = chooser.getSelectedFile();
+        	FileReader reader;
+			try {
+				reader = new FileReader(mFile);
+				BufferedReader in = new BufferedReader(reader);
+				String c = "";
+				while((c = in.readLine()) != null) {
+					codeArea.append(c + "\n");
+				}
+				in.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO: handle exception
+			}
+        }
+    }//GEN-LAST:event_menuOpenActionPerformed
+    
+    private void menuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaveActionPerformed
+    	String code = codeArea.getText();
+    	try {
+			FileWriter outFile = new FileWriter(mFile);
+			BufferedWriter out = new BufferedWriter(outFile);
+			out.write(code);
+			out.close();
+		} catch (FileNotFoundException e) {
+			System.err.print("Can't find the saving file!!\n");
+		} catch (IOException e) {
+			System.err.print("Write to file failed!!\n");
+		}
+    }//GEN-LAST:event_menuSaveActionPerformed
 
     private void menuSmallerFontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSmallerFontActionPerformed
         enlargeFontSize(-2);
@@ -239,6 +345,9 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextArea logArea;
     private javax.swing.JMenuItem menuExit;
+    private javax.swing.JMenuItem menuNew;
+    private javax.swing.JMenuItem menuOpen;
+    private javax.swing.JMenuItem menuSave;
     private javax.swing.JMenuItem menuLargerFont;
     private javax.swing.JMenuItem menuRun;
     private javax.swing.JMenuItem menuSmallerFont;
