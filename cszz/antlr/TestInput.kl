@@ -1,0 +1,27 @@
+import \java\lang\*;
+import \java\util\List;
+import java\util\LinkedList;
+class<T>{
+    static String msg = "Hello,world";
+    constructor(String m){
+        msg = m;
+    }
+    static void main(String[] args){
+        System.out.println(msg);
+    }
+    void decl(){
+        int i = 1;
+        if(i==0) return;
+        var l = i;
+        var emptyMap = [];
+        var map = [name:"cszz"];
+        var emptyList = [];
+        var list = ["item"];
+    }
+    void method(int p,long q){
+        for(int i=0;i<100;i++){
+            method(p,q);
+        }
+    }
+    int methodWithReturn(int p){}
+}

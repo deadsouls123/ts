@@ -1,5 +1,0 @@
-String hello(String name){
-    var str = "hello" + name;
-    return str;
-}
-//println(hello("kalang"));
