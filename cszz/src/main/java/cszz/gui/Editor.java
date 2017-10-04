@@ -19,14 +19,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-<<<<<<< HEAD:cszz/src/main/java/cszz/gui/Editor.java
-import cszz.util.ClassExecutor;
-=======
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
-import kalang.util.ClassExecutor;
->>>>>>> FETCH_HEAD:kalang/src/main/java/kalang/gui/Editor.java
+import cszz.util.ClassExecutor;
 /**
  *
  * @author Kason Yang
