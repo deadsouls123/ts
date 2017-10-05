@@ -4,6 +4,10 @@ import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -92,7 +96,7 @@ public class CszzLexer extends Lexer {
 		"'>>='", "'>>>='", null, null, "'@'", "'...'", null, null, null, "'\\'", 
 		"'${'", "'\"'"
 	};
-	private static final String[] _SYMBOLIC_NAMES = {
+	public static final String[] _SYMBOLIC_NAMES = {
 		null, "DOUBLE_COLON", "AS", "CONSTRUCTOR", "VAR", "VAL", "FOREACH", "ARROW", 
 		"START_DOT", "OVERRIDE", "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", 
 		"CASE", "CATCH", "CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", 
@@ -112,6 +116,27 @@ public class CszzLexer extends Lexer {
 		"AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT", "PACKAGE_DELIMITER", 
 		"INTERPOLATION_INTERUPT", "INTERPOLATION_END", "INTERPOLATION_STRING"
 	};
+	
+	public static final String[] keywords = {
+			"DOUBLE_COLON", "AS", "CONSTRUCTOR", "VAR", "VAL", "FOREACH", "ARROW", 
+			"START_DOT", "OVERRIDE", "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", 
+			"CASE", "CATCH", "CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", 
+			"DOUBLE", "ELSE", "ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", 
+			"IF", "GOTO", "IMPLEMENTS", "IMPORT", "INSTANCEOF", "INT", "INTERFACE", 
+			"LONG", "NATIVE", "NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", 
+			"RETURN", "SHORT", "STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", 
+			"THIS", "THROW", "THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", 
+			"IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", 
+			"StringLiteral", "MultiLineStringLiteral", "NullLiteral", "LPAREN", "RPAREN", 
+			"LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "ASSIGN", 
+			"GT", "LT", "BANG", "TILDE", "QUESTION", "COLON", "EQUAL", "LE", "GE", 
+			"NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL", "DIV", "BITAND", 
+			"BITOR", "CARET", "MOD", "ADD_ASSIGN", "SUB_ASSIGN", "MUL_ASSIGN", "DIV_ASSIGN", 
+			"AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", "MOD_ASSIGN", "LSHIFT_ASSIGN", 
+			"RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "InterpolationPreffixString", "Identifier", 
+			"AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT", "PACKAGE_DELIMITER", 
+			"INTERPOLATION_INTERUPT", "INTERPOLATION_END", "INTERPOLATION_STRING"
+		};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -716,5 +741,17 @@ public class CszzLexer extends Lexer {
 		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
 			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
+	}
+	
+	public static boolean getLexer(String str) {
+		List<String> list = Arrays.asList(_LITERAL_NAMES);
+		if(list.contains(str)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static String[] getLexerStringList() {
+		return keywords;
 	}
 }

@@ -48,7 +48,7 @@ public class Editor extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        codeArea = new javax.swing.JTextArea();
+        codeArea = new HighlightJPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         logArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -71,18 +71,17 @@ public class Editor extends javax.swing.JFrame {
         jSplitPane1.setDividerLocation(420);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        codeArea.setColumns(20);
-        codeArea.setRows(5);
-        codeArea.setCaretColor(new java.awt.Color(255, 255, 255));
-        codeArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        codeArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
+//        codeArea.setRows(5);
+//        codeArea.setCaretColor(new java.awt.Color(255, 255, 255));
+//        codeArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+//        codeArea.setMargin(new java.awt.Insets(5, 5, 5, 5));
         jScrollPane1.setViewportView(codeArea);
-        codeArea.setBackground(Color.BLACK);
-        codeArea.setForeground(new Color(0xF9,0xF9,0xF9));
+//        codeArea.setBackground(Color.BLACK);
+//        codeArea.setForeground(new Color(0xF9,0xF9,0xF9));
         logArea.setBackground(new Color(18,18,18));
         logArea.setForeground(new Color(0xF9,0xF9,0xF9));
 
-        setFontSize(18);
+        //setFontSize(18);
 
         jSplitPane1.setTopComponent(jScrollPane1);
 
@@ -222,7 +221,7 @@ public class Editor extends javax.swing.JFrame {
 				BufferedReader in = new BufferedReader(reader);
 				String c = "";
 				while((c = in.readLine()) != null) {
-					codeArea.append(c + "\n");
+					//codeArea.append(c + "\n");
 				}
 				in.close();
 			} catch (FileNotFoundException e) {
@@ -249,18 +248,18 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSaveActionPerformed
 
     private void menuSmallerFontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSmallerFontActionPerformed
-        enlargeFontSize(-2);
+        //enlargeFontSize(-2);
     }//GEN-LAST:event_menuSmallerFontActionPerformed
 
-    private void enlargeFontSize(int increment){
-        enlargeFontSize(codeArea, increment);
-        enlargeFontSize(logArea, increment);
-    }
-    
-    private void setFontSize(float newSize){
-        setFontSize(codeArea,newSize);
-        setFontSize(logArea,newSize);
-    }
+//    private void enlargeFontSize(int increment){
+//        enlargeFontSize(codeArea, increment);
+//        enlargeFontSize(logArea, increment);
+//    }
+//    
+//    private void setFontSize(float newSize){
+//        setFontSize(codeArea,newSize);
+//        setFontSize(logArea,newSize);
+//    }
     
     private void setFontSize(JTextArea area,float newSize){
         if(newSize<8) newSize = 8;
@@ -276,7 +275,7 @@ public class Editor extends javax.swing.JFrame {
     }
     
     private void menuLargerFontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLargerFontActionPerformed
-        enlargeFontSize(2);
+        //enlargeFontSize(2);
     }//GEN-LAST:event_menuLargerFontActionPerformed
     
     private void menuRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRunActionPerformed
@@ -338,7 +337,7 @@ public class Editor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea codeArea;
+    private HighlightJPane codeArea;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
