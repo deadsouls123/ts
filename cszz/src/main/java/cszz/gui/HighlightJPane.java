@@ -49,6 +49,17 @@ public class HighlightJPane extends JTextPane {
 		StyleConstants.setForeground(bracketAttr, Color.ORANGE);
 		StyleConstants.setBold(bracketAttr, true);
 	}
+	
+	public void append(String str) {
+		JTextPane textPane = new JTextPane();
+        Document docs = textPane.getDocument();
+        try {
+            docs.insertString(docs.getLength(), str, inputAttributes);
+        } catch (BadLocationException e) {
+        	System.err.print("Add text failed!!!");
+            e.printStackTrace();
+        }
+	}
 
 	private void setBracketColor(String _text) {
 		int len = _text.length();
@@ -103,7 +114,7 @@ public class HighlightJPane extends JTextPane {
 		return _length + 1;
 	}
 
-	private void dealText(int _start, int _end) {
+	public void dealText(int _start, int _end) {
 		String text = "";
 		try {
 			text = m_doc.getText(_start, _end - _start).toUpperCase();
