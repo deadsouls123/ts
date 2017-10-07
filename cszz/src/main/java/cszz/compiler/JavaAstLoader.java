@@ -39,7 +39,7 @@ import cszz.util.ModifierUtil;
 /**
  * The class loads ast from java class
  *
- * @author Kason Yang
+ * 
  */
 public class JavaAstLoader extends AstLoader {
 

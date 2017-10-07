@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileSystemView;
 import cszz.util.ClassExecutor;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class Editor extends javax.swing.JFrame {
 

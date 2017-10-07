@@ -4,7 +4,7 @@ import cszz.compiler.AstLoader;
 import cszz.util.AstUtil;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ArrayType extends ObjectType{
 

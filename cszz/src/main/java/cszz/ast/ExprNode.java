@@ -5,7 +5,7 @@ import cszz.core.*;
 /**
  * The base class of expression node
  * 
- * @author Kason Yang 
+ *  
  */
 public abstract class ExprNode extends AstNode{
     /**

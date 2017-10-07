@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class FieldVisitorTest {
     public String name = "test";

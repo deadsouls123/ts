@@ -14,7 +14,7 @@ import cszz.util.NameUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class Ast2JavaStub extends AstVisitor<Void> implements CodeGenerator{
     

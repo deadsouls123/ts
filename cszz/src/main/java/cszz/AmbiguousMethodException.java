@@ -9,7 +9,7 @@ import cszz.util.AstUtil;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class AmbiguousMethodException extends Exception{
 

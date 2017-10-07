@@ -13,7 +13,7 @@ import cszz.util.NameUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class TypeNameResolver {
 

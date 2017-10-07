@@ -25,7 +25,7 @@ import cszz.util.CollectionsUtil;
 /**
  * The initialization analyzer class.
  *
- * @author Kason Yang
+ * 
  */
 public class InitializationAnalyzer extends AstVisitor<Object> {
 

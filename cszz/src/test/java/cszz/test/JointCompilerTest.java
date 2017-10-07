@@ -6,7 +6,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class JointCompilerTest extends JointCompilerTestCase{
     

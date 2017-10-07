@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 import cszz.core.*;
 /**
  * 
- * @author Kason Yang
+ * 
  */
 public class ClassNode extends AstNode implements Annotationable{
     

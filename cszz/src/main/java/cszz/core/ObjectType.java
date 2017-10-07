@@ -11,7 +11,7 @@ import cszz.util.MethodUtil;
 import cszz.util.ModifierUtil;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public abstract class ObjectType extends Type{
     

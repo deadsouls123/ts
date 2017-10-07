@@ -7,7 +7,7 @@ import cszz.core.MethodDescriptor;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ClassTypeUtil {
     

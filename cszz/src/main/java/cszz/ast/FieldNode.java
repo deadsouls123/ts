@@ -8,7 +8,7 @@ import cszz.core.FieldDescriptor;
 import cszz.core.Type;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class FieldNode extends VarObject implements FieldDescriptor{
     

@@ -9,7 +9,7 @@ import cszz.core.Type;
 import cszz.core.Types;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class UnknownInvocationExpr extends ExprNode{
     

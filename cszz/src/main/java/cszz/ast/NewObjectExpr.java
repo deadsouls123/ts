@@ -11,7 +11,7 @@ import cszz.core.Type;
 import cszz.util.AstUtil;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class NewObjectExpr extends ExprNode{
 

@@ -5,7 +5,7 @@ import cszz.core.Type;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class OverrideUtil {
     

@@ -9,7 +9,7 @@ import cszz.antlr.CszzParser;
 import org.antlr.v4.runtime.CommonTokenStream;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class CompileContextProxy implements CompileContext{
     

@@ -5,7 +5,7 @@ import javax.tools.SimpleJavaFileObject;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public abstract class MemoryJavaSource extends SimpleJavaFileObject{
     

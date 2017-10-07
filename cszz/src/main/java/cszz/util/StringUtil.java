@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class StringUtil {
     

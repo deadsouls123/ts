@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class ErrorRecoverTest {
     

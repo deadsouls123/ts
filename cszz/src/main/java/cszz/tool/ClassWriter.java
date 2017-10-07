@@ -10,7 +10,7 @@ import cszz.compiler.codegen.Ast2Class;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ClassWriter implements CodeGenerator{
 

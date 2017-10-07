@@ -7,7 +7,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class JavaStubTest extends FileSystemCompiler{
     

@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import cszz.core.*;
 /**
  * BinaryExpr presents a binary operation, such as add,sub,multiply and so on
- * @author Kason Yang 
+ *  
  */
 public abstract class BinaryExpr extends ExprNode{
     

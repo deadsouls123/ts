@@ -6,7 +6,7 @@ import cszz.exception.Exceptions;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class StoreArrayElementExpr extends ExprNode {
     

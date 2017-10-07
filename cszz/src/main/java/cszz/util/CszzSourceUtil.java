@@ -8,7 +8,7 @@ import cszz.compiler.CszzSource;
 import org.apache.commons.io.FileUtils;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class CszzSourceUtil {
     public static CszzSource create(File dir,File sourceFile) throws IOException{

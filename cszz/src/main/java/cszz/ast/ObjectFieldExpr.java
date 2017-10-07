@@ -16,7 +16,7 @@ import cszz.util.Parameters;
 import cszz.util.AstUtil;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class ObjectFieldExpr extends FieldExpr{
     

@@ -4,7 +4,7 @@ import cszz.ast.FieldNode;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public interface FieldDescriptor {
 

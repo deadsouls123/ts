@@ -10,7 +10,7 @@ import cszz.util.MathType;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class CszzMethodSelector extends MethodSelector<ExecutableDescriptor,Type> {
 

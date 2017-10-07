@@ -8,7 +8,7 @@ import cszz.tool.JointFileSystemCompiler;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class JointCompilerTestCase extends JointFileSystemCompiler {
 

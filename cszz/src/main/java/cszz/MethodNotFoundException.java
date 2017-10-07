@@ -7,7 +7,7 @@ import java.util.*;
 import cszz.core.ObjectType;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class MethodNotFoundException extends Exception{
 

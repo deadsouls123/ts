@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class ParseTreeNavigator {
     

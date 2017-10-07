@@ -10,7 +10,7 @@ import cszz.util.AstOutputUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class AstWriter implements CodeGenerator{
 

@@ -41,7 +41,7 @@ import org.antlr.v4.runtime.Token;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ClassNodeMetaBuilder extends CszzParserBaseVisitor<Object> {
 

@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ClassExecutor {
     public static void executeMain(Class clazz,String[] args) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{

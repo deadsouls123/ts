@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import cszz.core.Type;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class LocalVarNode extends VarObject{
     

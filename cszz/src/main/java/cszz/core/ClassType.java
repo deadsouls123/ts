@@ -10,7 +10,7 @@ import cszz.ast.ClassNode;
 import cszz.exception.Exceptions;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ClassType extends ObjectType {
     

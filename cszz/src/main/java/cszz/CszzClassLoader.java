@@ -18,7 +18,7 @@ import cszz.tool.OutputManager;
 import org.apache.commons.io.FileUtils;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class CszzClassLoader extends URLClassLoader implements CodeGenerator{
 

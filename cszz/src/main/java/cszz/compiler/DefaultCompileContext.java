@@ -8,7 +8,7 @@ import cszz.util.TokenStreamFactory;
 import org.antlr.v4.runtime.CommonTokenStream;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class DefaultCompileContext implements CompileContext{
 

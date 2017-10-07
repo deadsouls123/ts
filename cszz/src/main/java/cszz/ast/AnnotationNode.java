@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class AnnotationNode{
     

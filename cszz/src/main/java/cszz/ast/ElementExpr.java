@@ -4,7 +4,7 @@ import cszz.core.*;
 /**
  * The ElementExpr presents a element of a array,for example <code>args[i]</code>
  * 
- * @author Kason Yang 
+ *  
  */
 public class ElementExpr extends AssignableExpr{
     

@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class FieldVisitor {
     public static Object get(Object obj,String name) throws NoSuchFieldException, IllegalAccessException{

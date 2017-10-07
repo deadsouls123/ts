@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public abstract class MethodSelector<M,T> {
     

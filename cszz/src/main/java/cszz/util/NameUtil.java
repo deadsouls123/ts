@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class NameUtil {
     

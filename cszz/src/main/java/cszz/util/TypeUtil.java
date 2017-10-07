@@ -17,7 +17,7 @@ import cszz.core.Types;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class TypeUtil {
     public static boolean equalTypes(Type[] declaredTypes,Type[] argTypes,@Nullable Map<GenericType,Type> genericTypes){

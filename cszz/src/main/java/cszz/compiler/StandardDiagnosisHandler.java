@@ -8,7 +8,7 @@ import java.io.Writer;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class StandardDiagnosisHandler implements DiagnosisHandler{
     

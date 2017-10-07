@@ -34,7 +34,7 @@ import org.apache.commons.io.FileUtils;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class JointFileSystemCompiler extends FileSystemCompiler{
     

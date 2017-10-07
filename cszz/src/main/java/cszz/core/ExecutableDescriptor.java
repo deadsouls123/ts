@@ -9,7 +9,7 @@ import cszz.util.MethodUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public abstract class ExecutableDescriptor {
     protected final Type[] parameterTypes;

@@ -11,7 +11,7 @@ import cszz.core.*;
 /**
  * The base class of any ast node
  * 
- * @author Kason Yang 
+ *  
  */
 public abstract class AstNode {
     

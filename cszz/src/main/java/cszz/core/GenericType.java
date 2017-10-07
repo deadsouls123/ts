@@ -10,7 +10,7 @@ import cszz.util.AstUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class GenericType extends ObjectType{
     

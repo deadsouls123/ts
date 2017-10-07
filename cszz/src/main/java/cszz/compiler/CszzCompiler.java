@@ -21,7 +21,7 @@ import org.antlr.v4.runtime.RecognitionException;
 /**
  * The core compiler
  * 
- * @author Kason Yang
+ * 
  */
 public class CszzCompiler extends AstLoader implements CompileContext{
         

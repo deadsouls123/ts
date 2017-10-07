@@ -34,7 +34,7 @@ import cszz.core.Types;
 /**
  * Helper for data conversion between primitive type and object type
  * 
- * @author Kason Yang 
+ *  
  */
 public class BoxUtil {
 

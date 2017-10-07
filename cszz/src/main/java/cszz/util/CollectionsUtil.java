@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class CollectionsUtil {
     

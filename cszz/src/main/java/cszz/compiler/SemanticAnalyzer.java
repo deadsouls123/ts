@@ -28,7 +28,7 @@ import cszz.util.BoxUtil;
 /**
  *  The semantic analyzer class infers and checks the componentType of expressions. It may transform the abstract syntax tree.
  * 
- * @author Kason Yang
+ * 
  */
 public class SemanticAnalyzer extends AstVisitor<Type> {
 

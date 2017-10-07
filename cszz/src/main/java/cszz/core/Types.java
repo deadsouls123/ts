@@ -11,7 +11,7 @@ import cszz.AstNotFoundException;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class Types {
     

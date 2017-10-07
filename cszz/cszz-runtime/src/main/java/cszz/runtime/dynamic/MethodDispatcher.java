@@ -13,7 +13,7 @@ import cszz.runtime.util.MethodSelector;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class MethodDispatcher {
     

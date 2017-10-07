@@ -14,7 +14,7 @@ import cszz.core.Types;
 import cszz.util.AstUtil;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class StaticInvokeExpr extends InvocationExpr{
 

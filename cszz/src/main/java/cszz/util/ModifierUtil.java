@@ -5,7 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ModifierUtil {
 

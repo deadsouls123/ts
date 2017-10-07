@@ -7,7 +7,7 @@ import cszz.ast.MethodNode;
 import cszz.ast.ParameterNode;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class MethodDescriptor extends ExecutableDescriptor {
     

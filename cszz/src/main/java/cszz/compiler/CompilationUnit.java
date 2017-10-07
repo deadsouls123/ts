@@ -9,7 +9,7 @@ import static cszz.compiler.CompilePhase.*;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class CompilationUnit {
 

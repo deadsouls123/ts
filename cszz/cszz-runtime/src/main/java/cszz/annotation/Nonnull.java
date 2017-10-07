@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,7 +1,7 @@
 package cszz.util;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class InvalidModifierException extends Exception {
 

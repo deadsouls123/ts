@@ -5,7 +5,7 @@ import cszz.ast.AstNode;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class AstOutputUtil {
     

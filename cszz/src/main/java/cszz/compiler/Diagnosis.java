@@ -1,7 +1,7 @@
 package cszz.compiler;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class Diagnosis {
 

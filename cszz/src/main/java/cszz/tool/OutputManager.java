@@ -5,7 +5,7 @@ import java.io.OutputStream;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public interface OutputManager {
     

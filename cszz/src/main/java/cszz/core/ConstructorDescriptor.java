@@ -4,7 +4,7 @@ import cszz.ast.MethodNode;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ConstructorDescriptor extends ExecutableDescriptor{
 

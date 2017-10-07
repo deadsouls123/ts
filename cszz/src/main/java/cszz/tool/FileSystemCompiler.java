@@ -22,7 +22,7 @@ import org.apache.commons.io.FileUtils;
 /**
  * The FileSystemCompiler compile sources from file system.
  * 
- * @author Kason Yang
+ * 
  */
 public class FileSystemCompiler extends CszzCompiler{
 

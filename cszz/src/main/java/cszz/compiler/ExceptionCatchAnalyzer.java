@@ -18,7 +18,7 @@ import cszz.core.Type;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class ExceptionCatchAnalyzer extends AstVisitor<Object> {
 

@@ -1,7 +1,7 @@
 package cszz.core;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public enum NullableKind {
     

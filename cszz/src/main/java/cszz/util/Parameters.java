@@ -1,7 +1,7 @@
 package cszz.util;
 /**
  *
- * @author Kason Yang
+ * 
  */
 public final class Parameters {
     

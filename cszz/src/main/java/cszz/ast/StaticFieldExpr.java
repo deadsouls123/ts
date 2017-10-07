@@ -11,7 +11,7 @@ import cszz.core.Types;
 import cszz.util.AstUtil;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class StaticFieldExpr extends FieldExpr{
     

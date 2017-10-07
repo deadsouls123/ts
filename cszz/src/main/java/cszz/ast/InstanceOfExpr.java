@@ -8,7 +8,7 @@ import cszz.core.Type;
 import cszz.core.Types;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class InstanceOfExpr extends ExprNode{
     

@@ -14,7 +14,7 @@ import cszz.core.Type;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class MethodUtil {
 

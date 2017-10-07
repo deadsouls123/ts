@@ -7,7 +7,7 @@ import java.util.*;
 import cszz.ast.ClassNode;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public interface CodeGenerator {
     

@@ -6,7 +6,7 @@ import javax.tools.JavaFileObject;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public abstract class StringJavaSourceBase extends MemoryJavaSource{
 

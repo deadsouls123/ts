@@ -9,7 +9,7 @@ import org.apache.commons.io.IOCase;
 
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class FilePathUtil {
 

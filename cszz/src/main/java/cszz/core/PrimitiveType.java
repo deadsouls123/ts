@@ -2,7 +2,7 @@
 package cszz.core;
 /**
  *
- * @author Kason Yang 
+ *  
  */
 public class PrimitiveType extends Type{
     

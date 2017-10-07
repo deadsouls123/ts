@@ -9,7 +9,7 @@ import cszz.util.TypeUtil;
 
 /**
  *
- * @author Kason Yang
+ * 
  */
 public class WildcardType extends ObjectType {
     
