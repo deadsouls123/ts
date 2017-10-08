@@ -24,6 +24,12 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+/**
+ *  build parser（解析器）
+ * 
+ * 
+ */
+
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CszzParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }

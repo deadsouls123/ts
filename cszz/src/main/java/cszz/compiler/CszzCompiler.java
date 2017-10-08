@@ -1,7 +1,5 @@
 package cszz.compiler;
 
-import static cszz.compiler.CompilePhase.PHASE_ALL;
-
 import java.util.HashMap;
 
 import javax.annotation.Nonnull;
@@ -21,20 +19,22 @@ import cszz.util.AntlrErrorString;
 import cszz.util.LexerFactory;
 import cszz.util.OffsetRangeHelper;
 import cszz.util.TokenStreamFactory;
+
 /**
  * The core compiler
  * 
  * 
  */
+
 public class CszzCompiler extends AstLoader implements CompileContext{
-        
-    private int compileTargetPhase = PHASE_ALL;
+
+    private int compileTargetPhase = CompilePhase.PHASE_ALL;
 
     private HashMap<String, CompilationUnit> compilationUnits = new HashMap<>();
 
     @Nonnull
-    private final HashMap<String, CszzSource> sources = new HashMap();
-    
+    private final HashMap<String, CszzSource> sources = new HashMap<>();
+
     private int compilingPhase;
     
     protected DiagnosisHandler diagnosisHandler = StandardDiagnosisHandler.INSTANCE;

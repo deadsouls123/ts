@@ -20,10 +20,12 @@ import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import cszz.util.ClassExecutor;
+
 /**
  *
  * 
  */
+
 public class Editor extends javax.swing.JFrame {
 
 	File mFile = null;
@@ -298,8 +300,8 @@ public class Editor extends javax.swing.JFrame {
         String code = codeArea.getText();
         String className = "Code" + (new Date()).getTime();
         try{
-            Class clazz = classLoader.parseSource(className, code,className);
-            if(clazz!=null){
+            Class<?> clazz = classLoader.parseSource(className, code,className);
+            if(clazz != null){
                 //TODO it seems that the compilation will not stop when encountering an error
                 //System.out.println("compile " + className + " successfully.");
                 ClassExecutor.executeMain(clazz, new String[0]);

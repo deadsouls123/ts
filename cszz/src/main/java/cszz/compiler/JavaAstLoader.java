@@ -37,6 +37,7 @@ import cszz.util.ModifierUtil;
  *
  * 
  */
+
 public class JavaAstLoader extends AstLoader {
 
   static String ROOT_CLASS = "java.lang.Object";

@@ -1,33 +1,38 @@
 package test.cszz.runtime;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import cszz.runtime.dynamic.FieldVisitor;
+
+import org.junit.Test;
+
 import cszz.runtime.dynamic.MethodAmbiguousException;
 import cszz.runtime.dynamic.MethodDispatcher;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  *  
  */
+
 public class MethodDispatcherTest {
-    
+
     public void method(List obj,ArrayList list){}
-    
+
     public void method(ArrayList obj,List list){}
-    
+
     public String test(Object obj){
         return "Object";
     }
+
     public String test(List list){
         return "List";
     }
-    
+
     public MethodDispatcherTest(){}
-    
+
     @Test
     public void test() throws Exception {
         List list = new ArrayList();
@@ -46,5 +51,5 @@ public class MethodDispatcherTest {
         }
         assertTrue(ambs);
     }
-    
+
 }

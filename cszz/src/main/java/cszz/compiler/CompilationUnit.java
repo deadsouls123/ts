@@ -1,16 +1,18 @@
 package cszz.compiler;
 
 import javax.annotation.Nonnull;
+
+import org.antlr.v4.runtime.CommonTokenStream;
+
 import cszz.antlr.CszzLexer;
 import cszz.antlr.CszzParser;
 import cszz.ast.ClassNode;
-import org.antlr.v4.runtime.CommonTokenStream;
-import static cszz.compiler.CompilePhase.*;
 
 /**
  *
  *  
  */
+
 public class CompilationUnit {
 
     private final CszzLexer lexer;
@@ -42,20 +44,20 @@ public class CompilationUnit {
         astBuilder.importPackage("java.nio");
         astBuilder.importPackage("cszz.io");
         semanticAnalyzer = context.createSemanticAnalyzer(this,context.getAstLoader());
-        compile(PHASE_INITIALIZE);
+        compile(CompilePhase.PHASE_INITIALIZE);
     }
     
     protected void doCompilePhase(int phase){
-        if(phase==PHASE_INITIALIZE){
+        if(phase==CompilePhase.PHASE_INITIALIZE){
             parseInit(context.getDiagnosisHandler());
-        }else if(phase==PHASE_PARSING){
+        }else if(phase==CompilePhase.PHASE_PARSING){
             parseMeta(context.getDiagnosisHandler());
-        }else if(phase == PHASE_BUILDAST){
+        }else if(phase == CompilePhase.PHASE_BUILDAST){
             parseBody(context.getDiagnosisHandler());
-        }else if(phase==PHASE_SEMANTIC){
+        }else if(phase==CompilePhase.PHASE_SEMANTIC){
             //TODO remove PHASE_SEMANTIC
             //semanticAnalysis(context.getDiagnosisHandler());
-        }else if(phase == PHASE_CLASSGEN){
+        }else if(phase == CompilePhase.PHASE_CLASSGEN){
             CodeGenerator codeGenerator = context.createCodeGenerator(this);
             if(codeGenerator==null){
                 throw new IllegalStateException("CodeGenerator is missing");

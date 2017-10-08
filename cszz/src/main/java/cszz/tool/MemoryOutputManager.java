@@ -12,9 +12,10 @@ import javax.annotation.Nullable;
  *
  *  
  */
+
 public class MemoryOutputManager implements OutputManager{
-    
-    final Map<String,ByteArrayOutputStream> oss = new HashMap();
+
+    final Map<String,ByteArrayOutputStream> oss = new HashMap<>();
 
     @Override
     public OutputStream createOutputStream(String className) throws IOException {

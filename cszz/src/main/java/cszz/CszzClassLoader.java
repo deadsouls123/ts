@@ -20,17 +20,19 @@ import cszz.compiler.SourceLoader;
 import cszz.compiler.codegen.Ast2Class;
 import cszz.tool.FileSystemSourceLoader;
 import cszz.tool.MemoryOutputManager;
+
 /**
  *
  * 
  */
-public class CszzClassLoader extends URLClassLoader implements CodeGenerator{
+
+public class CszzClassLoader extends URLClassLoader implements CodeGenerator {
 
     private final CszzCompiler compiler;
-    
+
     private final HashMap<String,Class> loadedClasses = new HashMap<>();
     private final FileSystemSourceLoader sourceLoader;
-    
+
     public CszzClassLoader() {
         this(new File[0]);
     }
@@ -49,13 +51,12 @@ public class CszzClassLoader extends URLClassLoader implements CodeGenerator{
             public CodeGenerator createCodeGenerator(CompilationUnit compilationUnit) {
                 return cg;
             }
-            
         };
     }
-    
+
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        Class clazz = loadedClasses.get(name);
+        Class<?> clazz = loadedClasses.get(name);
         if(clazz!=null) return clazz;
         CszzSource src = sourceLoader.loadSource(name);
         if(src!=null){
@@ -90,16 +91,15 @@ public class CszzClassLoader extends URLClassLoader implements CodeGenerator{
         }
         sourceLoader.addSourceDir(path);
     }
-    
-    public Class parseSource(String className,String code,String fileName){
+
+    public Class<?> parseSource(String className,String code,String fileName){
         compiler.addSource(className, code, fileName);
         compiler.compile();
         return loadedClasses.get(className);
     }
-    
-    public Class parseFile(String className,File file) throws IOException{
+
+    public Class<?> parseFile(String className,File file) throws IOException{
         String code = FileUtils.readFileToString(file);
         return parseSource(className, code, file.getName());
     }
-    
 }

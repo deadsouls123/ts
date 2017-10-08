@@ -133,10 +133,11 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- *  build ast from antlr parse tree
+ *  build ast（abstract syntax code，抽象语法树） from antlr parse tree
  * 
  * 
  */
+
 public class AstBuilder extends AbstractParseTreeVisitor implements CszzParserVisitor {
 
     private ClassNodeBuilder classNodeBuilder;
