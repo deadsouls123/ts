@@ -1,14 +1,14 @@
 package cszz.test;
 
-import java.util.Arrays;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 import cszz.AstNotFoundException;
-import cszz.core.ObjectType;
-import cszz.core.MethodDescriptor;
 import cszz.core.ClassType;
+import cszz.core.ObjectType;
 import cszz.core.Type;
 import cszz.core.Types;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

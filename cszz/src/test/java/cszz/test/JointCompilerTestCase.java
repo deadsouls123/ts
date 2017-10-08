@@ -1,10 +1,11 @@
 package cszz.test;
 
 import java.util.Objects;
-import junit.framework.Assert;
+
 import cszz.compiler.Diagnosis;
 import cszz.compiler.DiagnosisHandler;
 import cszz.tool.JointFileSystemCompiler;
+import junit.framework.Assert;
 
 /**
  *

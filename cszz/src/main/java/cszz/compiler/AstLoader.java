@@ -1,14 +1,12 @@
 package cszz.compiler;
 
-import cszz.AstNotFoundException;
 import java.util.HashMap;
 
-import cszz.ast.ClassNode;
-import java.lang.reflect.Modifier;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import cszz.ast.FieldNode;
-import cszz.core.Types;
+
+import cszz.AstNotFoundException;
+import cszz.ast.ClassNode;
 import cszz.util.AstUtil;
 
 public class AstLoader {

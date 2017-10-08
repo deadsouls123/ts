@@ -1,9 +1,10 @@
-/*
-
-*/
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import cszz.core.Type;
+
 public class CastExpr extends ExprNode{
     
     protected Type toType;

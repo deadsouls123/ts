@@ -1,21 +1,25 @@
-
 package cszz;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.io.FileUtils;
+
 import cszz.ast.ClassNode;
-import cszz.compiler.codegen.Ast2Class;
 import cszz.compiler.CodeGenerator;
 import cszz.compiler.CompilationUnit;
 import cszz.compiler.CszzCompiler;
 import cszz.compiler.CszzSource;
 import cszz.compiler.SourceLoader;
+import cszz.compiler.codegen.Ast2Class;
 import cszz.tool.FileSystemSourceLoader;
 import cszz.tool.MemoryOutputManager;
-import cszz.tool.OutputManager;
-import org.apache.commons.io.FileUtils;
 /**
  *
  * 

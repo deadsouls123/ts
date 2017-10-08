@@ -1,8 +1,5 @@
 package cszz.ast;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  *
  *  

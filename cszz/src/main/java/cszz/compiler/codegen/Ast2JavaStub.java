@@ -1,7 +1,7 @@
 package cszz.compiler.codegen;
 
 import java.lang.reflect.Modifier;
-import cszz.ast.AbstractAstVisitor;
+
 import cszz.ast.AstVisitor;
 import cszz.ast.ClassNode;
 import cszz.ast.FieldNode;
@@ -9,7 +9,6 @@ import cszz.ast.MethodNode;
 import cszz.ast.ParameterNode;
 import cszz.compiler.CodeGenerator;
 import cszz.core.GenericType;
-import cszz.util.AstUtil;
 import cszz.util.NameUtil;
 
 /**

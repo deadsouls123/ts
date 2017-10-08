@@ -1,6 +1,8 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import cszz.core.Type;
+import cszz.core.Types;
+
 public abstract class VarObject extends AstNode{
     
     public int modifier;

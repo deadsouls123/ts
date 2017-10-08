@@ -2,33 +2,14 @@ package cszz.compiler;
 
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import cszz.antlr.CszzParser;
-import cszz.antlr.CszzParserBaseVisitor;
-import cszz.ast.AssignExpr;
-import cszz.ast.AssignableExpr;
-import cszz.ast.BlockStmt;
-import cszz.ast.ClassNode;
-import cszz.ast.ExprNode;
-import cszz.ast.ExprStmt;
-import cszz.ast.FieldNode;
-import cszz.ast.MethodNode;
-import cszz.ast.ParameterExpr;
-import cszz.ast.ParameterNode;
-import cszz.ast.Statement;
-import cszz.ast.ThisExpr;
-import cszz.core.GenericType;
-import cszz.core.ModifierConstant;
-import cszz.core.NullableKind;
-import cszz.core.ObjectType;
-import cszz.core.Types;
-import cszz.exception.Exceptions;
-import cszz.util.AstUtil;
-import cszz.util.ModifierUtil;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
+
+import cszz.antlr.CszzParser;
+import cszz.antlr.CszzParserBaseVisitor;
+import cszz.ast.ClassNode;
 
 /**
  *

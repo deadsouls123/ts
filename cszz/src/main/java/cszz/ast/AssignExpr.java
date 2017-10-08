@@ -1,10 +1,13 @@
-/*
-
-*/
 package cszz.ast;
-import java.util.*;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 import javax.annotation.Nonnull;
-import cszz.core.*;
+
+import cszz.core.Type;
+
 public class AssignExpr extends ExprNode{
     
     @Nonnull

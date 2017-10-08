@@ -1,6 +1,5 @@
 package cszz.util;
 
-import java.util.Objects;
 import cszz.ast.AstNode;
 
 /**

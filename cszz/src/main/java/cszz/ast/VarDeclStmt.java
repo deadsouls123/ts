@@ -1,6 +1,9 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class VarDeclStmt extends Statement{
     
     public final List<LocalVarNode> vars = new LinkedList<>();

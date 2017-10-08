@@ -1,6 +1,8 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class ReturnStmt extends Statement{
     
     public ExprNode expr = null;

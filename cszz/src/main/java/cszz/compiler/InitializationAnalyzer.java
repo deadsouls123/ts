@@ -2,22 +2,21 @@ package cszz.compiler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import cszz.ast.AssignExpr;
+import cszz.ast.AssignableExpr;
 import cszz.ast.AstNode;
 import cszz.ast.AstVisitor;
 import cszz.ast.CatchBlock;
 import cszz.ast.ClassNode;
 import cszz.ast.IfStmt;
+import cszz.ast.LocalVarNode;
 import cszz.ast.LoopStmt;
 import cszz.ast.MethodNode;
 import cszz.ast.Statement;
 import cszz.ast.TryStmt;
 import cszz.ast.VarExpr;
-import java.util.Set;
-import javax.annotation.Nullable;
-import cszz.ast.AssignableExpr;
-import cszz.ast.LocalVarNode;
 import cszz.core.Type;
 import cszz.core.VarTable;
 import cszz.util.CollectionsUtil;

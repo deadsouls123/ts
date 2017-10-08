@@ -1,18 +1,17 @@
-
 package cszz.tool;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import cszz.compiler.CszzSource;
 import cszz.compiler.SourceLoader;
-import cszz.util.FilePathUtil;
 import cszz.util.CszzSourceUtil;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOCase;
+import cszz.util.FilePathUtil;
 /**
  *  The class load source from file system.
  *  

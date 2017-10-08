@@ -1,17 +1,16 @@
 package cszz.test;
 
-import cszz.antlr.CszzLexer;
-import cszz.antlr.CszzParser;
-import cszz.util.TokenStreamFactory;
 import org.antlr.v4.runtime.DefaultErrorStrategy;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.IntervalSet;
-import org.antlr.v4.runtime.misc.Pair;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import cszz.antlr.CszzLexer;
+import cszz.antlr.CszzParser;
+import cszz.util.TokenStreamFactory;
 
 /**
  *

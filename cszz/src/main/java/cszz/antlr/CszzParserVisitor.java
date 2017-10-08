@@ -1,5 +1,6 @@
 // Generated from CszzParser.g4 by ANTLR 4.5.1
 package cszz.antlr;
+
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

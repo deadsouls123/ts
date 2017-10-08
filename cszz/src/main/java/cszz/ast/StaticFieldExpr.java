@@ -1,18 +1,17 @@
-
 package cszz.ast;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
 import javax.annotation.Nullable;
+
 import cszz.FieldNotFoundException;
 import cszz.core.FieldDescriptor;
 import cszz.core.Types;
 import cszz.util.AstUtil;
+
 /**
  *
  *  
  */
+
 public class StaticFieldExpr extends FieldExpr{
     
     private ClassReference clazz;

@@ -1,17 +1,15 @@
-
 package cszz.ast;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
 import cszz.core.FieldDescriptor;
 import cszz.core.Type;
+
 /**
  *
  * 
  */
+
 public class FieldNode extends VarObject implements FieldDescriptor{
-    
+
     private final ClassNode classNode;
 
     protected FieldNode(ClassNode classNode,Type type,String name,int modifier) {

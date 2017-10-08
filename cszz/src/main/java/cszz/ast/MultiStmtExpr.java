@@ -1,6 +1,10 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import cszz.core.Type;
+
 public class MultiStmtExpr extends ExprNode{
     
     public final List<Statement> stmts = new LinkedList<>();

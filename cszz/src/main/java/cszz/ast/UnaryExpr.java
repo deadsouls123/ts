@@ -1,6 +1,12 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
+import cszz.core.Type;
+import cszz.core.Types;
+
 public class UnaryExpr extends ExprNode{
     
     public final static String

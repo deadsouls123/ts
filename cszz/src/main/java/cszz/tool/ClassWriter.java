@@ -1,9 +1,5 @@
 package cszz.tool;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import cszz.ast.ClassNode;
 import cszz.compiler.CodeGenerator;
 import cszz.compiler.codegen.Ast2Class;

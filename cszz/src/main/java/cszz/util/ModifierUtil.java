@@ -1,7 +1,6 @@
 package cszz.util;
 
 import java.lang.reflect.Modifier;
-import org.antlr.v4.runtime.tree.ParseTree;
 
 /**
  *

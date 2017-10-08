@@ -1,23 +1,66 @@
 package cszz.compiler.codegen;
 
-import java.io.File;
-import java.io.IOException;
-import cszz.ast.*;
-
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+
+import cszz.ast.AbstractAstVisitor;
+import cszz.ast.ArrayLengthExpr;
+import cszz.ast.AssignExpr;
+import cszz.ast.BinaryExpr;
+import cszz.ast.BlockStmt;
+import cszz.ast.BreakStmt;
+import cszz.ast.CastExpr;
+import cszz.ast.CatchBlock;
+import cszz.ast.ClassNode;
+import cszz.ast.ClassReference;
+import cszz.ast.ConstExpr;
+import cszz.ast.ContinueStmt;
+import cszz.ast.ElementExpr;
+import cszz.ast.ErrorousExpr;
+import cszz.ast.ExprNode;
+import cszz.ast.ExprStmt;
+import cszz.ast.FieldExpr;
+import cszz.ast.FieldNode;
+import cszz.ast.IfStmt;
+import cszz.ast.IncrementExpr;
+import cszz.ast.InstanceOfExpr;
+import cszz.ast.InvocationExpr;
+import cszz.ast.LocalVarNode;
+import cszz.ast.LoopStmt;
+import cszz.ast.MethodNode;
+import cszz.ast.MultiStmt;
+import cszz.ast.MultiStmtExpr;
+import cszz.ast.NewArrayExpr;
+import cszz.ast.NewObjectExpr;
+import cszz.ast.ObjectFieldExpr;
+import cszz.ast.ObjectInvokeExpr;
+import cszz.ast.ParameterExpr;
+import cszz.ast.ParameterNode;
+import cszz.ast.PrimitiveCastExpr;
+import cszz.ast.ReturnStmt;
+import cszz.ast.Statement;
+import cszz.ast.StaticFieldExpr;
+import cszz.ast.StaticInvokeExpr;
+import cszz.ast.StoreArrayElementExpr;
+import cszz.ast.SuperExpr;
+import cszz.ast.ThisExpr;
+import cszz.ast.ThrowStmt;
+import cszz.ast.TryStmt;
+import cszz.ast.UnaryExpr;
+import cszz.ast.UnknownFieldExpr;
+import cszz.ast.UnknownInvocationExpr;
+import cszz.ast.VarDeclStmt;
+import cszz.ast.VarExpr;
+import cszz.ast.VarObject;
 import cszz.compiler.CodeGenerator;
 import cszz.core.ObjectType;
 import cszz.core.Type;
 import cszz.core.Types;
 import cszz.exception.Exceptions;
-import cszz.util.AstUtil;
-import cszz.util.ClassNameUtil;
-import org.apache.commons.io.FileUtils;
 
 /**
  * The class output the ast as java source

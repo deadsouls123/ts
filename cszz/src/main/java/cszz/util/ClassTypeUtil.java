@@ -1,9 +1,10 @@
 package cszz.util;
 
 import javax.annotation.Nullable;
+
 import cszz.ast.ClassNode;
-import cszz.core.ObjectType;
 import cszz.core.MethodDescriptor;
+import cszz.core.ObjectType;
 
 /**
  *

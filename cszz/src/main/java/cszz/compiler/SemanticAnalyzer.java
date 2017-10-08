@@ -1,9 +1,13 @@
 package cszz.compiler;
 
-import cszz.util.MathType;
-import cszz.util.AstUtil;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Nullable;
+
+import cszz.ast.AnnotationNode;
+import cszz.ast.AssignableExpr;
 import cszz.ast.AstNode;
 import cszz.ast.AstVisitor;
 import cszz.ast.BinaryExpr;
@@ -13,17 +17,15 @@ import cszz.ast.ExprNode;
 import cszz.ast.MethodNode;
 import cszz.ast.ReturnStmt;
 import cszz.ast.UnaryExpr;
-import java.util.Set;
-import javax.annotation.Nullable;
-import cszz.ast.AnnotationNode;
-import cszz.ast.AssignableExpr;
 import cszz.core.ArrayType;
 import cszz.core.ObjectType;
 import cszz.core.PrimitiveType;
 import cszz.core.Type;
 import cszz.core.Types;
 import cszz.exception.Exceptions;
+import cszz.util.AstUtil;
 import cszz.util.BoxUtil;
+import cszz.util.MathType;
 
 /**
  *  The semantic analyzer class infers and checks the componentType of expressions. It may transform the abstract syntax tree.

@@ -1,6 +1,7 @@
 package cszz.java;
 
 import java.net.URI;
+
 import javax.tools.SimpleJavaFileObject;
 
 /**

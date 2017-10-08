@@ -1,10 +1,12 @@
 package cszz.test;
 
 import java.io.File;
-import junit.framework.Assert;
+
+import org.junit.Test;
+
 import cszz.java.MemoryCompiler;
 import cszz.java.MemoryFileManager;
-import org.junit.Test;
+import junit.framework.Assert;
 
 /**
  *

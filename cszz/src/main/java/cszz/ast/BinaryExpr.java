@@ -1,14 +1,16 @@
-/*
-
-*/
 package cszz.ast;
-import java.util.*;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 import javax.annotation.Nonnull;
-import cszz.core.*;
+
 /**
  * BinaryExpr presents a binary operation, such as add,sub,multiply and so on
  *  
  */
+
 public abstract class BinaryExpr extends ExprNode{
     
     public static final String
@@ -95,5 +97,4 @@ public abstract class BinaryExpr extends ExprNode{
     public String getOperation() {
         return operation;
     }
-
 }

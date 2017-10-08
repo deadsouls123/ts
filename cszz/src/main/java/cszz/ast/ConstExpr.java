@@ -1,7 +1,11 @@
 package cszz.ast;
+
 import javax.annotation.Nullable;
-import cszz.core.*;
+
+import cszz.core.Type;
+import cszz.core.Types;
 import cszz.exception.Exceptions;
+
 public class ConstExpr extends ExprNode{
     
     @Nullable

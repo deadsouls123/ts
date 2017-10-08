@@ -1,10 +1,10 @@
-
 package cszz.util;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Nonnull;
+
 import org.antlr.v4.runtime.Token;
 /**
  *

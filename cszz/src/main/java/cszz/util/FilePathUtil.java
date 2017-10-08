@@ -1,9 +1,8 @@
 package cszz.util;
 
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOCase;
 

@@ -1,17 +1,11 @@
 package cszz.compiler;
 
 import java.lang.annotation.Annotation;
-import cszz.AstNotFoundException;
-import cszz.ast.ClassNode;
-import cszz.ast.VarObject;
-import cszz.ast.MethodNode;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
@@ -19,20 +13,22 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import cszz.AstNotFoundException;
+import cszz.ast.ClassNode;
 import cszz.ast.FieldNode;
-import cszz.ast.ParameterNode;
-import cszz.core.ArrayType;
-import cszz.core.ObjectType;
+import cszz.ast.MethodNode;
+import cszz.core.ClassType;
 import cszz.core.GenericType;
 import cszz.core.NullableKind;
-import cszz.core.ClassType;
+import cszz.core.ObjectType;
 import cszz.core.Type;
 import cszz.core.Types;
 import cszz.core.WildcardType;
 import cszz.exception.Exceptions;
-import cszz.util.AstUtil;
 import cszz.util.MethodUtil;
 import cszz.util.ModifierUtil;
 

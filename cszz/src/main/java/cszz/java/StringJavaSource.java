@@ -3,10 +3,12 @@ package cszz.java;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+
 import javax.tools.JavaFileObject;
-import javax.tools.SimpleJavaFileObject;
-import cszz.util.ClassNameUtil;
+
 import org.apache.commons.io.FileUtils;
+
+import cszz.util.ClassNameUtil;
 
 /**
  *

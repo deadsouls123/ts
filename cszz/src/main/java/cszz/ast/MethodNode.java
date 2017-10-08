@@ -1,8 +1,14 @@
 package cszz.ast;
+
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.annotation.Nullable;
-import cszz.core.*;
+
+import cszz.core.Type;
+
 public class MethodNode extends AstNode implements Annotationable{
     
     private final int modifier;

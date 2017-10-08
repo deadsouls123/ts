@@ -1,7 +1,9 @@
 package cszz.ast;
-import java.util.*;
+
 import javax.annotation.Nullable;
-import cszz.core.*;
+
+import cszz.core.Type;
+
 public class VarExpr extends AssignableExpr{
     
     protected final LocalVarNode var;

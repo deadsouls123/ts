@@ -1,10 +1,9 @@
-/*
-
-*/
 package cszz.ast;
-import java.util.*;
-import javax.annotation.Nullable;
-import cszz.core.*;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class BlockStmt extends Statement{
     
     public final List<Statement> statements = new LinkedList<>();

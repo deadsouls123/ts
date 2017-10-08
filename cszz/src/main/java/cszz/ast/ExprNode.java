@@ -1,12 +1,16 @@
 package cszz.ast;
-import java.util.*;
+
 import javax.annotation.Nonnull;
-import cszz.core.*;
+
+import cszz.core.Type;
+import cszz.core.Types;
+
 /**
  * The base class of expression node
  * 
  *  
  */
+
 public abstract class ExprNode extends AstNode{
     /**
      * The type of the expression

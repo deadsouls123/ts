@@ -1,15 +1,8 @@
-
 package cszz.ast;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
 import cszz.core.Type;
 import cszz.core.Types;
-/**
- *
- *  
- */
+
 public class CompareExpr extends BinaryExpr{
 
     public CompareExpr(ExprNode expr1, ExprNode expr2, String operation) {
@@ -20,7 +13,5 @@ public class CompareExpr extends BinaryExpr{
     public Type getType() {
         return Types.BOOLEAN_TYPE;
     }
-    
-    
 
 }

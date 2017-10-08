@@ -1,18 +1,19 @@
 
 package cszz.ast;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import cszz.AmbiguousMethodException;
 import cszz.MethodNotFoundException;
 import cszz.core.ObjectType;
 import cszz.core.Type;
-import cszz.util.AstUtil;
+
 /**
  *
  *  
  */
+
 public class NewObjectExpr extends ExprNode{
 
     protected ObjectType objectType;

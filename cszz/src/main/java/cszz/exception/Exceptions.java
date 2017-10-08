@@ -1,7 +1,6 @@
 package cszz.exception;
 
 import java.util.Objects;
-import cszz.core.FieldDescriptor;
 
 /**
  *

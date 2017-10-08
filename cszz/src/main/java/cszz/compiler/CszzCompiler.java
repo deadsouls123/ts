@@ -1,23 +1,26 @@
 package cszz.compiler;
 
-import java.io.PrintStream;
-import cszz.AstNotFoundException;
-import cszz.ast.ClassNode;
+import static cszz.compiler.CompilePhase.PHASE_ALL;
+
 import java.util.HashMap;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.DefaultErrorStrategy;
+import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.RecognitionException;
+
+import cszz.AstNotFoundException;
 import cszz.antlr.CszzLexer;
 import cszz.antlr.CszzParser;
-import static cszz.compiler.CompilePhase.*;
+import cszz.ast.ClassNode;
 import cszz.compiler.codegen.Ast2Java;
 import cszz.util.AntlrErrorString;
 import cszz.util.LexerFactory;
 import cszz.util.OffsetRangeHelper;
 import cszz.util.TokenStreamFactory;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.DefaultErrorStrategy;
-import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.RecognitionException;
 /**
  * The core compiler
  * 

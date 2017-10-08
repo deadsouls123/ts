@@ -1,23 +1,33 @@
 package cszz.tool;
 
-import cszz.util.ClassNameUtil;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.annotation.Nullable;
+
+import org.apache.commons.io.FileUtils;
+
 import cszz.ast.ClassNode;
-import cszz.compiler.codegen.Ast2JavaStub;
 import cszz.compiler.AstLoader;
 import cszz.compiler.CodeGenerator;
 import cszz.compiler.CompilationUnit;
-import cszz.compiler.CompileContextProxy;
 import cszz.compiler.CompilePhase;
-import cszz.compiler.JavaAstLoader;
 import cszz.compiler.CszzCompiler;
+import cszz.compiler.JavaAstLoader;
 import cszz.compiler.SourceLoader;
-import org.apache.commons.io.FileUtils;
+import cszz.compiler.codegen.Ast2JavaStub;
+import cszz.util.ClassNameUtil;
 
 /**
  * The FileSystemCompiler compile sources from file system.

@@ -1,4 +1,5 @@
 package cszz.ast;
+
 public interface IAstVisitor<T>{
     
     public T visitInstanceOfExpr(InstanceOfExpr node);

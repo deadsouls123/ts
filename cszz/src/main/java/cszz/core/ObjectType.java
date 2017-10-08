@@ -1,11 +1,17 @@
-
 package cszz.core;
+
 import java.lang.reflect.Modifier;
-import cszz.ast.ClassNode;
-import cszz.ast.MethodNode;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Nullable;
+
+import cszz.ast.ClassNode;
 import cszz.ast.FieldNode;
+import cszz.ast.MethodNode;
 import cszz.ast.ParameterNode;
 import cszz.util.MethodUtil;
 import cszz.util.ModifierUtil;

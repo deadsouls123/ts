@@ -3,8 +3,6 @@ package cszz.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

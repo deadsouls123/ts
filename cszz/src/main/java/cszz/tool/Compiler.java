@@ -7,16 +7,16 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import cszz.CszzClassLoader;
-import cszz.compiler.Diagnosis;
-import cszz.compiler.DiagnosisHandler;
-import cszz.compiler.StandardDiagnosisHandler;
-import cszz.util.ClassNameUtil;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
+import cszz.CszzClassLoader;
+import cszz.compiler.Diagnosis;
+import cszz.compiler.DiagnosisHandler;
 
 /**
  *

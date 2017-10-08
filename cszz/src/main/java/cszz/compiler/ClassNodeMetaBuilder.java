@@ -5,7 +5,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Nullable;
+
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
+
 import cszz.antlr.CszzParser;
 import cszz.antlr.CszzParser.MethodDeclContext;
 import cszz.antlr.CszzParserBaseVisitor;
@@ -36,8 +41,6 @@ import cszz.util.AstUtil;
 import cszz.util.ClassTypeUtil;
 import cszz.util.MethodUtil;
 import cszz.util.ModifierUtil;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.Token;
 
 /**
  *

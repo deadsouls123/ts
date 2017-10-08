@@ -13,24 +13,27 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.annotation.Nullable;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileManager;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
-import cszz.ast.ClassNode;
+
+import org.apache.commons.io.FileUtils;
+
 import cszz.AstNotFoundException;
+import cszz.ast.ClassNode;
 import cszz.compiler.CompilePhase;
-import cszz.compiler.JavaAstLoader;
 import cszz.compiler.CszzSource;
+import cszz.compiler.JavaAstLoader;
 import cszz.java.MemoryCompiler;
 import cszz.java.MemoryFileManager;
 import cszz.java.StringJavaSource;
 import cszz.java.StringJavaSourceBase;
 import cszz.util.ClassNameUtil;
 import cszz.util.FilePathUtil;
-import org.apache.commons.io.FileUtils;
 
 /**
  *

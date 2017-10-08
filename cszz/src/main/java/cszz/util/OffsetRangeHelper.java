@@ -1,15 +1,9 @@
 package cszz.util;
 
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
-import cszz.compiler.OffsetRange;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.RuleNode;
-import org.antlr.v4.runtime.tree.TerminalNode;
+
+import cszz.compiler.OffsetRange;
 
 /**
  *

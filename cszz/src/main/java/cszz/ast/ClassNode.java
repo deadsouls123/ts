@@ -1,11 +1,20 @@
 package cszz.ast;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.annotation.Nullable;
-import cszz.core.*;
+
+import cszz.core.GenericType;
+import cszz.core.ObjectType;
+import cszz.core.Type;
+
 /**
  * 
  * 
  */
+
 public class ClassNode extends AstNode implements Annotationable{
     
     public int modifier;

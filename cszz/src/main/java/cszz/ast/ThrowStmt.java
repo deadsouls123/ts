@@ -1,6 +1,8 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class ThrowStmt extends Statement{
     
     public ExprNode expr;

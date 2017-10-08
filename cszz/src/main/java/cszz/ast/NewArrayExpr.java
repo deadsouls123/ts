@@ -1,6 +1,10 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.Objects;
+
+import cszz.core.Type;
+import cszz.core.Types;
+
 public class NewArrayExpr extends ExprNode{
     
     protected Type componentType;

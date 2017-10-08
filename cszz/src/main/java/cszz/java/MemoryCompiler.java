@@ -1,10 +1,18 @@
 package cszz.java;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.annotation.Nullable;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -14,9 +22,11 @@ import javax.tools.JavaFileObject;
 import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
+
+import org.apache.commons.io.FileUtils;
+
 import cszz.util.ClassNameUtil;
 import cszz.util.FilePathUtil;
-import org.apache.commons.io.FileUtils;
 
 /**
  *

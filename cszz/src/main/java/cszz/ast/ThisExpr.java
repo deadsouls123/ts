@@ -1,6 +1,9 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import cszz.core.ObjectType;
+import cszz.core.Type;
+import cszz.core.Types;
+
 public class ThisExpr extends ExprNode{
     
     private final ObjectType classType;

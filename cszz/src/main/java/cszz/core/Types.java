@@ -1,14 +1,21 @@
-
 package cszz.core;
-import cszz.ast.ClassNode;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import cszz.compiler.AstLoader;
-import cszz.AstNotFoundException;
+
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
+
+import cszz.AstNotFoundException;
+import cszz.ast.ClassNode;
+import cszz.compiler.AstLoader;
 /**
  *
  * 

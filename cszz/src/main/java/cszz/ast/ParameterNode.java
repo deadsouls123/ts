@@ -1,14 +1,12 @@
-
 package cszz.ast;
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
+
 import cszz.core.Type;
+
 /**
  *
  *  
  */
+
 public class ParameterNode extends VarObject{
     
     private final MethodNode method;

@@ -2,12 +2,14 @@ package cszz.test;
 
 import java.io.File;
 import java.io.IOException;
-import junit.framework.Assert;
+
+import org.junit.Test;
+
 import cszz.compiler.Diagnosis;
 import cszz.compiler.DiagnosisHandler;
 import cszz.compiler.codegen.Ast2Class;
 import cszz.tool.MemoryOutputManager;
-import org.junit.Test;
+import junit.framework.Assert;
 
 /**
  *

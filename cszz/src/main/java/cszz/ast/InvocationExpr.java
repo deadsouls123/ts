@@ -1,14 +1,17 @@
 package cszz.ast;
 
-import java.util.*;
-import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Objects;
+
 import javax.annotation.Nullable;
+
 import cszz.AmbiguousMethodException;
 import cszz.MethodNotFoundException;
 import cszz.compiler.CszzMethodSelector;
-import cszz.core.*;
+import cszz.core.ExecutableDescriptor;
+import cszz.core.ObjectType;
+import cszz.core.Type;
 import cszz.util.AstUtil;
-import cszz.util.TypeUtil;
 
 public abstract class InvocationExpr extends ExprNode {
 

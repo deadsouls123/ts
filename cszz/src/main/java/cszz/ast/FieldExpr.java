@@ -1,11 +1,13 @@
 package cszz.ast;
-import java.util.*;
-import javax.annotation.CheckForNull;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import cszz.FieldNotFoundException;
-import cszz.core.*;
-import cszz.util.AstUtil;
+import cszz.core.FieldDescriptor;
+import cszz.core.ObjectType;
+import cszz.core.Type;
+
 public abstract class FieldExpr extends AssignableExpr{
     
     @Nonnull

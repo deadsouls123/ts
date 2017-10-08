@@ -1,6 +1,11 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import cszz.core.PrimitiveType;
+import cszz.core.Type;
+
 public class PrimitiveCastExpr extends ExprNode{
     
     protected PrimitiveType fromType;

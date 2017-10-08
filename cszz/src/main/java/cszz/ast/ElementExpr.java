@@ -1,11 +1,19 @@
 package cszz.ast;
-import java.util.*;
-import cszz.core.*;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
+import cszz.core.ArrayType;
+import cszz.core.Type;
+import cszz.core.Types;
+
 /**
  * The ElementExpr presents a element of a array,for example <code>args[i]</code>
  * 
  *  
  */
+
 public class ElementExpr extends AssignableExpr{
     
     protected ExprNode arrayExpr;

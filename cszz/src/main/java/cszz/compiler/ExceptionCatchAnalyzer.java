@@ -1,6 +1,7 @@
 package cszz.compiler;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import cszz.ast.AstNode;
@@ -11,9 +12,8 @@ import cszz.ast.InvocationExpr;
 import cszz.ast.MethodNode;
 import cszz.ast.Statement;
 import cszz.ast.TryStmt;
-import java.util.Map;
-import cszz.core.ObjectType;
 import cszz.core.ExecutableDescriptor;
+import cszz.core.ObjectType;
 import cszz.core.Type;
 
 /**
