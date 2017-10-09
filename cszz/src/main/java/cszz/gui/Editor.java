@@ -1,12 +1,14 @@
 package cszz.gui;
 
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,14 +20,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import cszz.util.ClassExecutor;
-
 /**
  *
  * 
  */
-
 public class Editor extends javax.swing.JFrame {
 
 	File mFile = null;
@@ -234,6 +235,28 @@ public class Editor extends javax.swing.JFrame {
     
     private void menuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaveActionPerformed
     	String code = codeArea.getText();
+    	if(mFile == null) {
+    		String name = JOptionPane.showInputDialog("请输入要保存的文件名");
+        	if(name != null && !name.equals("")) {
+    	    	File file = new File("workspace/" + name + ".cszz");
+    	        File dir = new File("workspace");
+    	        
+    	        if(!dir.exists()) {
+    	        	dir.mkdir();
+    	        }
+    	        if(!file.exists()) {
+    	        	try {
+    					file.createNewFile();
+    					mFile = file;
+    				} catch (IOException e) {
+    					e.printStackTrace();
+    					System.err.print("Create new file failed!!\n");
+    				}
+    	        } else {
+    	        	System.err.print("File exist!\n");
+    	        }
+        	}
+    	}
     	try {
 			FileWriter outFile = new FileWriter(mFile);
 			BufferedWriter out = new BufferedWriter(outFile);
@@ -300,7 +323,7 @@ public class Editor extends javax.swing.JFrame {
         String code = codeArea.getText();
         String className = "Code" + (new Date()).getTime();
         try{
-            Class<?> clazz = classLoader.parseSource(className, code,className);
+            Class clazz = classLoader.parseSource(className, code,className);
             if(clazz != null){
                 //TODO it seems that the compilation will not stop when encountering an error
                 //System.out.println("compile " + className + " successfully.");
