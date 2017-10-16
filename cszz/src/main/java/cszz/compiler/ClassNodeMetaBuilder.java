@@ -85,9 +85,10 @@ public class ClassNodeMetaBuilder extends CszzParserBaseVisitor<Object> {
         List<Token> gnrTypes = ctx.genericTypes;
         if (gnrTypes != null && !gnrTypes.isEmpty()) {
             for (Token g : gnrTypes) {
+            	throw Exceptions.unsupportedTypeException(Types.getRootType());
                 //TODO suport generic type bounds in syntax
-                GenericType gt = new GenericType(g.getText(), Types.getRootType(), null, NullableKind.NONNULL);
-                thisClazz.declareGenericType(gt);
+//                GenericType gt = new GenericType(g.getText(), Types.getRootType(), null, NullableKind.NONNULL);
+//                thisClazz.declareGenericType(gt);
             }
         }
         ObjectType superType = null;

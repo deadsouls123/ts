@@ -24,7 +24,8 @@ public class ConstExpr extends ExprNode{
             }else if(vt.equals(Long.class)){
                 t = Types.LONG_TYPE;
             }else if(vt.equals(Float.class)){
-                t = Types.FLOAT_TYPE;
+//                t = Types.FLOAT_TYPE;
+                throw Exceptions.unsupportedTypeException(value);
             }else if(vt.equals(Double.class)){
                 t = Types.DOUBLE_TYPE;
             }else if(vt.equals(Byte.class)){

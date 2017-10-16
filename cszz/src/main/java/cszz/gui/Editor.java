@@ -29,7 +29,7 @@ import cszz.util.ClassExecutor;
  */
 public class Editor extends javax.swing.JFrame {
 
-	File mFile = null;
+    File mFile = null;
     /**
      * Creates new form Editor
      */
@@ -178,109 +178,109 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuExitActionPerformed
     
     private void menuNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNewActionPerformed
-    	String name = JOptionPane.showInputDialog("请输入文件名");
-    	if(name != null && !name.equals("")) {
-	    	File file = new File("workspace/" + name + ".cszz");
-	        File dir = new File("workspace");
-	        
-	        if(!dir.exists()) {
-	        	dir.mkdir();
-	        }
-	        if(!file.exists()) {
-	        	try {
-	        		//save();
-	        		codeArea.setText("");
-					file.createNewFile();
-					mFile = file;
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.err.print("Create new file failed!!\n");
-				}
-	        } else {
-	        	System.err.print("File exist!\n");
-	        }
-    	}
+        String name = JOptionPane.showInputDialog("请输入文件名");
+        if(name != null && !name.equals("")) {
+            File file = new File("workspace/" + name + ".cszz");
+            File dir = new File("workspace");
+
+            if(!dir.exists()) {
+                dir.mkdir();
+            }
+            if(!file.exists()) {
+                try {
+                    //save();
+                    codeArea.setText("");
+                    file.createNewFile();
+                    mFile = file;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.print("Create new file failed!!\n");
+                }
+            } else {
+                System.err.print("File exist!\n");
+            }
+        }
     }//GEN-LAST:event_menuNewActionPerformed
     
     private void menuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenActionPerformed
-    	JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File(""));
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Java", "cszz");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(new JPanel());
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-        	codeArea.setText("");
-        	mFile = chooser.getSelectedFile();
-        	FileReader reader;
-        	String result = "";
-			try {
-				reader = new FileReader(mFile);
-				BufferedReader in = new BufferedReader(reader);
-				String c = "";
-				while((c = in.readLine()) != null) {
-					result += c;
-					result += "\n";
-				}
-				codeArea.setText(result);
-				codeArea.syntaxParse();
-				in.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO: handle exception
-			}
+            codeArea.setText("");
+            mFile = chooser.getSelectedFile();
+            FileReader reader;
+            String result = "";
+            try {
+                reader = new FileReader(mFile);
+                BufferedReader in = new BufferedReader(reader);
+                String c = "";
+                while((c = in.readLine()) != null) {
+                    result += c;
+                    result += "\n";
+                }
+                codeArea.setText(result);
+                codeArea.syntaxParse();
+                in.close();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO: handle exception
+            }
         }
     }//GEN-LAST:event_menuOpenActionPerformed
     
     private void menuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaveActionPerformed
-    	String code = codeArea.getText();
-    	if(mFile == null) {
-    		String name = JOptionPane.showInputDialog("请输入要保存的文件名");
-        	if(name != null && !name.equals("")) {
-    	    	File file = new File("workspace/" + name + ".cszz");
-    	        File dir = new File("workspace");
-    	        
-    	        if(!dir.exists()) {
-    	        	dir.mkdir();
-    	        }
-    	        if(!file.exists()) {
-    	        	try {
-    					file.createNewFile();
-    					mFile = file;
-    				} catch (IOException e) {
-    					e.printStackTrace();
-    					System.err.print("Create new file failed!!\n");
-    				}
-    	        } else {
-    	        	System.err.print("File exist!\n");
-    	        }
-        	}
-    	}
-    	try {
-			FileWriter outFile = new FileWriter(mFile);
-			BufferedWriter out = new BufferedWriter(outFile);
-			out.write(code);
-			out.close();
-		} catch (FileNotFoundException e) {
-			System.err.print("Can't find the saving file!!\n");
-		} catch (IOException e) {
-			System.err.print("Write to file failed!!\n");
-		}
+        String code = codeArea.getText();
+        if(mFile == null) {
+            String name = JOptionPane.showInputDialog("请输入要保存的文件名");
+            if(name != null && !name.equals("")) {
+                File file = new File("workspace/" + name + ".cszz");
+                File dir = new File("workspace");
+
+                if(!dir.exists()) {
+                    dir.mkdir();
+                }
+                if(!file.exists()) {
+                    try {
+                        file.createNewFile();
+                        mFile = file;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.err.print("Create new file failed!!\n");
+                    }
+                } else {
+                    System.err.print("File exist!\n");
+                }
+            }
+        }
+        try {
+            FileWriter outFile = new FileWriter(mFile);
+            BufferedWriter out = new BufferedWriter(outFile);
+            out.write(code);
+            out.close();
+        } catch (FileNotFoundException e) {
+            System.err.print("Can't find the saving file!!\n");
+        } catch (IOException e) {
+            System.err.print("Write to file failed!!\n");
+        }
     }//GEN-LAST:event_menuSaveActionPerformed
     
     private void save() {//GEN-FIRST:event_menuSaveActionPerformed
-    	String code = codeArea.getText();
-    	try {
-			FileWriter outFile = new FileWriter(mFile);
-			BufferedWriter out = new BufferedWriter(outFile);
-			out.write(code);
-			out.close();
-		} catch (FileNotFoundException e) {
-			System.err.print("Can't find the saving file!!\n");
-		} catch (IOException e) {
-			System.err.print("Write to file failed!!\n");
-		}
+        String code = codeArea.getText();
+        try {
+            FileWriter outFile = new FileWriter(mFile);
+            BufferedWriter out = new BufferedWriter(outFile);
+            out.write(code);
+            out.close();
+        } catch (FileNotFoundException e) {
+            System.err.print("Can't find the saving file!!\n");
+        } catch (IOException e) {
+            System.err.print("Write to file failed!!\n");
+        }
     }//GEN-LAST:event_menuSaveActionPerformed
 
     private void menuSmallerFontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSmallerFontActionPerformed

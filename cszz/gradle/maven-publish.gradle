@@ -38,12 +38,12 @@ uploadArchives {
         packaging 'jar'
         // optionally artifactId can be defined here 
         description project.description
-        url 'https://github.com/kasonyang/kasonyang.github.io'
+        url 'https://github.com/cszz/cszz.github.io'
 
         scm {
-          connection 'scm:git:https://github.com/kasonyang/kasonyang.github.io.git'
-          developerConnection 'scm:git:https://github.com/kasonyang/kasonyang.github.io.git'
-          url 'https://github.com/kasonyang/kasonyang.github.io.git'
+          connection 'scm:git:https://github.com/cszz/cszz.github.io.git'
+          developerConnection 'scm:git:https://github.com/cszz/cszz.github.io.git'
+          url 'https://github.com/cszz/cszz.github.io.git'
         }
 
         licenses {
@@ -56,7 +56,7 @@ uploadArchives {
 
         developers {
           developer {
-            id 'kasonyang'
+            id 'cszz'
             name 'Kason Yang'
             email 'me@kason.site'
           }

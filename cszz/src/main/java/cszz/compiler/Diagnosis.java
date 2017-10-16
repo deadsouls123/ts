@@ -58,6 +58,12 @@ public class Diagnosis {
     @Override
     public String toString() {
         String fileName =  source == null ? "UNKNOWN SOURCE" : source.getFileName();
+
+        if(description != null && !description.equalsIgnoreCase("")){
+            Exception e = new Exception(description);
+            e.printStackTrace();	
+        }
+
         return String.format("%s:%s:%s:%s", kind,fileName,offset.startLine,description);
     }
     
