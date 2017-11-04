@@ -93,8 +93,13 @@ import static org.objectweb.asm.Opcodes.T_LONG;
 import static org.objectweb.asm.Opcodes.T_SHORT;
 import static org.objectweb.asm.Opcodes.V1_6;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.Writer;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
@@ -398,6 +403,9 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             md.visitInsn(RETURN);
             md.visitMaxs(1, 1);
         }
+        
+        //md = classWriter.visitMethod(ACC_STATIC, "<iload>", "()V", null, null);
+
         if(node.enclosingClass!=null){
             this.classWriter.visitInnerClass(this.internalName(node), this.internalName(node.enclosingClass), NameUtil.getSimpleClassName(node.name), node.modifier);
         }
@@ -407,8 +415,14 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         classWriter.visitEnd();
         if(outputManager!=null){
             try {
+            	FileOutputStream fos = new FileOutputStream(new File("a.class"));
+            	PrintStream ps = new PrintStream(fos);
+                BufferedOutputStream out= new BufferedOutputStream(fos);
+
                 try (OutputStream os = outputManager.createOutputStream(node.name)) {
                     os.write(this.classWriter.toByteArray());
+                    fos.write(this.classWriter.toByteArray());
+                    System.out.println(this.classWriter.toByteArray());
                 }
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
@@ -416,6 +430,16 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         }else{
             LOG.log(Level.WARNING, "outputManager is null");
         }
+        
+        Runtime runtime = Runtime.getRuntime();
+        String[] sh = {"/bin/sh", "-c", "javap -c a.class > a.txt"};
+        try {
+			Process process = runtime.exec(sh);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+  
         this.clazz = oldClass;
         this.classInternalName = oldClassInternalName;
         this.classWriter = oldClassWriter;
@@ -448,7 +472,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             }
         }
         md.visitLabel(methodStartLabel);
-        if(body!=null){
+        if(body != null){
             visit(body);
             if(node.getType().equals(VOID_TYPE)){
                 md.visitInsn(RETURN);
