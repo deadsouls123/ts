@@ -187,6 +187,7 @@ import cszz.core.WildcardType;
 import cszz.exception.Exceptions;
 import cszz.tool.OutputManager;
 import cszz.util.AstUtil;
+import cszz.util.FilePathUtil;
 import cszz.util.MethodUtil;
 import cszz.util.ModifierUtil;
 import cszz.util.NameUtil;
@@ -415,7 +416,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         classWriter.visitEnd();
         if(outputManager!=null){
             try {
-            	FileOutputStream fos = new FileOutputStream(new File("a.class"));
+            	FileOutputStream fos = new FileOutputStream(new File(FilePathUtil.CLASS_PATH));
             	PrintStream ps = new PrintStream(fos);
                 BufferedOutputStream out= new BufferedOutputStream(fos);
 
@@ -430,16 +431,27 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         }else{
             LOG.log(Level.WARNING, "outputManager is null");
         }
-        
         Runtime runtime = Runtime.getRuntime();
-        String[] sh = {"/bin/sh", "-c", "javap -c a.class > a.txt"};
+        String[] sh = new String[3];
+        String cmd = String.format("javap -c %s > %s", FilePathUtil.CLASS_PATH,FilePathUtil.CMD_PATH);
+
+        //区分是否是windows
+        String os = System.getProperty("os.name");
+        if(os.toLowerCase().startsWith("win")){
+          sh[0] = "cmd";
+          sh[1] = "/C";
+        } else {
+          sh[0] = "/bin/sh";
+          sh[1] = "-c";
+        }
+        sh[2] = cmd;
+
         try {
 			Process process = runtime.exec(sh);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  
         this.clazz = oldClass;
         this.classInternalName = oldClassInternalName;
         this.classWriter = oldClassWriter;
