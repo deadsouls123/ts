@@ -198,7 +198,9 @@ import cszz.util.Parameters;
  *  
  */
 public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerator{
-
+	
+    //time is used to account the frequence about CPU.
+	public int TIME = 0;
     private ClassWriter classWriter;
     private MethodVisitor md;
     
@@ -431,11 +433,12 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         }else{
             LOG.log(Level.WARNING, "outputManager is null");
         }
+        System.out.println("cpu å‘¨æœŸæ€»æ•°ï¼š" + TIME); 
         Runtime runtime = Runtime.getRuntime();
         String[] sh = new String[3];
         String cmd = String.format("javap -c %s > %s", FilePathUtil.CLASS_PATH,FilePathUtil.CMD_PATH);
 
-        //Çø·ÖÊÇ·ñÊÇwindows
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½windows
         String os = System.getProperty("os.name");
         if(os.toLowerCase().startsWith("win")){
           sh[0] = "cmd";
@@ -556,6 +559,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
 
     @Override
     public Object visitBreakStmt(BreakStmt node) {
+    	TIME = TIME+2;
         md.visitJumpInsn(GOTO, breakLabels.peek());
         return null;
     }
@@ -567,10 +571,12 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
     }
     
     private void pop(Type type){
+    	TIME = TIME+2;
         int size =  asmType(type).getSize();
         if(size==1){
             md.visitInsn(POP);
         }else if(size==2){
+        	TIME = TIME+4;
             md.visitInsn(POP2);
         }else{
             throw new UnsupportedOperationException("It is unsupported to pop for the type:" + type);
@@ -681,6 +687,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         if(node.expr!=null){
             visit(node.expr);
             Type type = node.expr.getType();
+            TIME = TIME+4;
             lnsn = asmType(type).getOpcode(IRETURN);
         }
         md.visitInsn(lnsn);
@@ -741,6 +748,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         org.objectweb.asm.Type type = asmType(to.getType());
         visit(from);
         int vid = getVarId(to);
+        TIME++;
         md.visitVarInsn(type.getOpcode(ISTORE), vid);
     }
     
@@ -769,6 +777,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
     private void astore(ExprNode expr){
         visit(expr);
         org.objectweb.asm.Type type = asmType(expr.getType());
+        TIME++;
         md.visitInsn(type.getOpcode(IASTORE));
     }
     
@@ -809,17 +818,42 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         int op;
         org.objectweb.asm.Type at = asmType(node.getExpr1().getType());
         switch(node.getOperation()){
-            case "+": op = IADD;break;
-            case "-" : op = ISUB;break;
-            case "*" : op = IMUL;break;
-            case "/" : op = IDIV;break;
-            case "%":op = IREM;break;
+            case "+": 
+            	TIME = TIME+2;
+            	op = IADD;
+            break;
+            case "-" :
+            	TIME = TIME+2;
+            	op = ISUB;
+            break;
+            case "*" :
+            	TIME = TIME+4;
+            	op = IMUL;
+            break;
+            case "/" : 
+            	TIME = TIME+8;
+            	op = IDIV;
+            break;
+            case "%":
+            	TIME = TIME+1;
+            	op = IREM;
+            break;
             //bitwise
-            case BinaryExpr.OP_AND:op = IAND;break;
-            case BinaryExpr.OP_OR:op = IOR;break;
-            case BinaryExpr.OP_XOR: op = IXOR;break;
-            case BinaryExpr.OP_SHIFT_LEFT:op = ISHL;break;
-            case BinaryExpr.OP_SHIFT_RIGHT:op = ISHR;break;
+            case BinaryExpr.OP_AND:
+            	TIME = TIME+2;
+            	op = IAND;break;
+            case BinaryExpr.OP_OR:
+            	TIME = TIME+2;
+            	op = IOR;break;
+            case BinaryExpr.OP_XOR: 
+            	TIME = TIME+2;
+            	op = IXOR;break;
+            case BinaryExpr.OP_SHIFT_LEFT:
+            	TIME = TIME+2;
+            	op = ISHL;break;
+            case BinaryExpr.OP_SHIFT_RIGHT:
+            	TIME = TIME+2;
+            	op = ISHR;break;
             default://logic expression
                 Label trueLabel = new Label();
                 Label stopLabel = new Label();
@@ -873,6 +907,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         visit(node.getArrayExpr());
         visit(node.getIndex());
         org.objectweb.asm.Type t = asmType(node.getType());
+        TIME++;
         md.visitInsn(t.getOpcode(IALOAD));
         return null;
     }
@@ -903,6 +938,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         ExecutableDescriptor method = node.getMethod();
         String ownerClass;// = internalName(node.getMethod().classNode);
         if (node instanceof StaticInvokeExpr) {
+        	TIME = TIME+4;
             opc = INVOKESTATIC;
             ownerClass = internalName(((StaticInvokeExpr) node).getInvokeClass().getReferencedClassNode());
         } else if(node instanceof ObjectInvokeExpr) {
@@ -914,6 +950,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             if (Modifier.isPrivate(method.getModifier()) || (target instanceof SuperExpr) || method.getName().equals("<init>")) {
                 opc = INVOKESPECIAL;
             } else {
+            	TIME = TIME+6;
                 opc =ModifierUtil.isInterface(targetType.getClassNode().modifier) ?
                         INVOKEINTERFACE : INVOKEVIRTUAL;
             }
@@ -939,6 +976,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             case UnaryExpr.OPERATION_POS:
                 break;
             case UnaryExpr.OPERATION_NEG:
+            	TIME = TIME+1;
                 md.visitInsn(t.getOpcode(INEG));
                 break;
             case UnaryExpr.OPERATION_NOT:
@@ -950,6 +988,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
            case UnaryExpr.OPERATION_LOGIC_NOT:
                Label falseLabel = new Label();
                Label stopLabel = new Label();
+               TIME = TIME+2;
                md.visitJumpInsn(IFEQ, falseLabel);
                constFalse();
                md.visitJumpInsn(GOTO, stopLabel);
@@ -1111,6 +1150,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
     private void visitVarObject(VarObject vo){
         org.objectweb.asm.Type type = asmType(vo.getType());
         int vid = getVarId(vo);
+        TIME++;
         md.visitVarInsn(type.getOpcode(ILOAD),vid);
     }
     
@@ -1167,7 +1207,10 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             else if(tt.equals(BYTE_TYPE)) return I2B;
             else if(tt.equals(CHAR_TYPE)) return I2C;
         }else if(f.equals(FLOAT_TYPE)){
-            if(tt.equals(INT_TYPE)) return F2I;
+            if(tt.equals(INT_TYPE)) {
+            	TIME = TIME+2;
+            	return F2I;
+            }                  	
             else if(tt.equals(LONG_TYPE)) return F2L;
             else if(tt.equals(DOUBLE_TYPE)) return F2D;
         }else if(f.equals(LONG_TYPE)){
@@ -1175,7 +1218,10 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             else if(tt.equals(FLOAT_TYPE)) return L2F;
             else if(tt.equals(DOUBLE_TYPE)) return L2D;
         }else if(f.equals(DOUBLE_TYPE)){
-            if(tt.equals(INT_TYPE)) return D2I;
+            if(tt.equals(INT_TYPE)) {
+            	TIME = TIME+2;
+            	return D2I;
+            }
             else if(tt.equals(LONG_TYPE)) return D2L;
             else if(tt.equals(FLOAT_TYPE)) return D2F;
         }else if(f.equals(BYTE_TYPE)){
@@ -1230,8 +1276,10 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
     public Object visitNewObjectExpr(NewObjectExpr node) {
         org.objectweb.asm.Type t = asmType(node.getObjectType());
         md.visitTypeInsn(NEW, t.getInternalName());
+        TIME = TIME+2;
         md.visitInsn(DUP);
         visitAll(node.getConstructor().getArguments());
+        TIME = TIME+4;
         md.visitMethodInsn(
                 INVOKESPECIAL
                 , t.getInternalName()
@@ -1243,9 +1291,15 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
 
     private void dupX(Type type){
         int size = asmType(type).getSize();
-        if(size==1) md.visitInsn(DUP);
-        else if(size==2) md.visitInsn(DUP2);
-        else throw new UnsupportedOperationException("unsupported type:" + type);
+        if(size==1) { 
+            TIME = TIME+2;
+            md.visitInsn(DUP);
+        }else if(size==2) {
+            TIME = TIME+3;
+            md.visitInsn(DUP2);
+        }else {
+            throw new UnsupportedOperationException("unsupported type:" + type);
+        }
     }
     
     @Override
@@ -1364,21 +1418,25 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             int opc = -1;
             switch(op){
                 case "==" :
+                	TIME = TIME+2;
                     opc = jumpOnTrue ? IF_ICMPEQ : IF_ICMPNE;
                     break;
                 case ">"    : 
                     opc =jumpOnTrue ? IF_ICMPGT : IF_ICMPLE;
                     break;
                 case ">=" : 
+                	TIME = TIME+2;
                     opc =jumpOnTrue ? IF_ICMPGE : IF_ICMPLT;
                     break;
                 case "<"   : 
                     opc = jumpOnTrue ? IF_ICMPLT : IF_ICMPGE;
                     break;
                 case "<=" : 
+                	TIME = TIME+2;
                     opc =jumpOnTrue ? IF_ICMPLE : IF_ICMPGT;
                     break;
                 case "!=" : 
+                	TIME = TIME+2;
                     opc = jumpOnTrue ? IF_ICMPNE : IF_ACMPEQ;
                     break;
                 default:
@@ -1407,10 +1465,19 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             switch(op){
                 case "==" : opc =jumpOnTrue ? IFEQ : IFNE;break;
                 case ">"    : opc =jumpOnTrue ? IFGT : IFLE ;break;
-                case ">=" : opc =jumpOnTrue ? IFGE : IFLT ;break;
-                case "<"   : opc =jumpOnTrue ? IFLT:IFGE;break;
-                case "<=" : opc =jumpOnTrue ? IFLE:IFGT;break;
-                case "!=" : opc =jumpOnTrue ? IFNE:IFEQ;break;
+                case ">=" : 
+                	TIME = TIME+2;
+                	opc =jumpOnTrue ? IFGE : IFLT ;
+                break;
+                case "<"   : 
+                	TIME = TIME+2;
+                	opc =jumpOnTrue ? IFLT:IFGE;break;
+                case "<=" : 
+                	TIME = TIME+2;
+                	opc =jumpOnTrue ? IFLE:IFGT;break;
+                case "!=" : 
+                	TIME = TIME +2;
+                	opc =jumpOnTrue ? IFNE:IFEQ;break;
                 default:
                     throw  new UnsupportedOperationException("Unsupported operation:" + op);
             }
