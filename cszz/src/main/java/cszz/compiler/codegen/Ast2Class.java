@@ -56,6 +56,8 @@ import static org.objectweb.asm.Opcodes.IF_ICMPGT;
 import static org.objectweb.asm.Opcodes.IF_ICMPLE;
 import static org.objectweb.asm.Opcodes.IF_ICMPLT;
 import static org.objectweb.asm.Opcodes.IF_ICMPNE;
+import static org.objectweb.asm.Opcodes.IFNULL;
+import static org.objectweb.asm.Opcodes.IFNONNULL;
 import static org.objectweb.asm.Opcodes.ILOAD;
 import static org.objectweb.asm.Opcodes.IMUL;
 import static org.objectweb.asm.Opcodes.INEG;
@@ -110,11 +112,11 @@ import java.util.logging.Logger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 import cszz.AstNotFoundException;
 import cszz.ast.AbstractAstVisitor;
@@ -221,6 +223,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
     
     private Label methodStartLabel ;
     private Label methodEndLabel;
+    private boolean mNullFlag = false;
     
     private final static int 
             T_I = 0,
@@ -435,7 +438,6 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         String[] sh = new String[3];
         String cmd = String.format("javap -c %s > %s", FilePathUtil.CLASS_PATH,FilePathUtil.CMD_PATH);
 
-        //区分是否是windows
         String os = System.getProperty("os.name");
         if(os.toLowerCase().startsWith("win")){
           sh[0] = "cmd";
@@ -727,6 +729,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         int exVarId = getVarId(node.catchVar);
         md.visitVarInsn(ASTORE, exVarId);
         visit(node.execStmt);
+        mNullFlag = false;
         return null;
     }
 
@@ -862,8 +865,13 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
         Object v = getJavaConst(node);
         if(v==null){
             md.visitInsn(ACONST_NULL);
+            mNullFlag = true;
         }else{
+        	//if(v instanceof Integer) {
+        		//md.visitIntInsn(Opcodes.BIPUSH, (int)v);
+        	//} else {
             md.visitLdcInsn(v);
+        	//}
         }
         return null;
     }
@@ -1365,6 +1373,7 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             switch(op){
                 case "==" :
                     opc = jumpOnTrue ? IF_ICMPEQ : IF_ICMPNE;
+                	//opc = IFNULL;
                     break;
                 case ">"    : 
                     opc =jumpOnTrue ? IF_ICMPGT : IF_ICMPLE;
@@ -1387,9 +1396,17 @@ public class Ast2Class extends AbstractAstVisitor<Object> implements CodeGenerat
             md.visitJumpInsn(opc, label);
         }else if(T_A==t){//object type
              if(op.equals("==")){
-                md.visitJumpInsn(jumpOnTrue ? IF_ACMPEQ : IF_ACMPNE,label);
+            	if(mNullFlag) {
+            		md.visitJumpInsn(jumpOnTrue ? IFNULL: IFNONNULL,label);
+            	} else {
+                    md.visitJumpInsn(jumpOnTrue ? IF_ACMPEQ : IF_ACMPNE,label);
+            	}
             }else if(op.equals("!=")){
-                md.visitJumpInsn(jumpOnTrue ? IF_ACMPNE:IF_ACMPEQ,label);
+            	if(mNullFlag) {
+            		md.visitJumpInsn(jumpOnTrue ? IFNONNULL : IFNULL,label);
+            	} else {
+                    md.visitJumpInsn(jumpOnTrue ? IF_ACMPNE:IF_ACMPEQ,label);
+            	}
             }else{
                 throw new UnsupportedOperationException("It is unsupported to compare object type:" + type);
             }
