@@ -10,31 +10,24 @@ import java.util.List;
  * 
  */
 public abstract class MethodSelector<M,T> {
-    
+
     public boolean matchType(T objClass,T declaredClass){
         return isAssignableFrom(declaredClass, objClass);
     }
-    
+
     public boolean matchType(T[] objClasses,T[] declaredClasses){
         int objLen = objClasses.length;
         int declaredLen = declaredClasses.length;
-        if(objLen!=declaredLen) return false;
+        if(objLen != declaredLen) return false;
         for(int i=0;i<objLen;i++){
             if(!matchType(objClasses[i], declaredClasses[i])) return false;
         }
         return true;
     }
-    
-    private boolean equalsTypes(T[] types1,T[] types2){
-        if(types1.length!=types2.length) return false;
-        for(int i=0;i<types1.length;i++){
-            if(!equalsType(types1[i], types2[i])) return false;
-        }
-        return true;
-    }
-    
-    public List<M> select(M[] mds,String name,T... argTypes){
-        List<M> matched = new ArrayList(mds.length);
+
+    @SuppressWarnings("unchecked")
+	public List<M> select(M[] mds,String name,T... argTypes){
+        List<M> matched = new ArrayList<M>(mds.length);
         for(M m:mds){
             if(!name.equals(getMethodName(m))) continue;
             T[] types = getMethodParameterTypes(m);
@@ -45,12 +38,20 @@ public abstract class MethodSelector<M,T> {
                 matched.add(m);
             }
         }
-        if(matched.size()<=1) return matched;
+        if(matched.size() <= 1) return matched;
         return selectMostPrecise(matched,argTypes);
     }
-    
+
+    private boolean equalsTypes(T[] types1,T[] types2){
+        if(types1.length != types2.length) return false;
+        for(int i=0;i<types1.length;i++){
+            if(!equalsType(types1[i], types2[i])) return false;
+        }
+        return true;
+    }
+
     private boolean isMorePreciseTypes(T[] actualTypes,T[] typesToCompare1,T[] typesToCompare2){
-        if(typesToCompare1.length!=typesToCompare2.length) return false;
+        if(typesToCompare1.length != typesToCompare2.length) return false;
         boolean isMorePrecise = false;
         for(int i=0;i<typesToCompare1.length;i++){
             T at = actualTypes[i];
@@ -64,10 +65,10 @@ public abstract class MethodSelector<M,T> {
         }
         return isMorePrecise;
     }
-     
-    private List<M> selectMostPrecise(List<M>mds,T[] actualTypes){
+
+    private List<M> selectMostPrecise(List<M> mds,T[] actualTypes){
         int size = mds.size();
-        if(size==0) return new ArrayList();
+        if(size==0) return new ArrayList<M>();
         M ret = mds.get(0);
         for(int i=1;i<size;i++){
             M m = mds.get(i);
@@ -85,10 +86,10 @@ public abstract class MethodSelector<M,T> {
         return Collections.singletonList(ret);
     }
 
-    protected abstract String getMethodName(M method) ;
+    protected abstract String getMethodName(M method);
 
     protected abstract T[] getMethodParameterTypes(M method);
-    
+
     /**
      * 
      * @param actualType
@@ -97,9 +98,9 @@ public abstract class MethodSelector<M,T> {
      * @return true if candidate1 is more precise
      */
     protected abstract boolean isMorePreciseType(T actualType,T candidate1,T candidate2);
-    
+
     protected abstract boolean isAssignableFrom(T to,T from);
-    
+
     protected abstract boolean equalsType(T type1,T type2);
 
 }

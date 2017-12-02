@@ -13,6 +13,7 @@ import org.antlr.v4.runtime.Token;
 
 import cszz.antlr.CszzParser;
 import cszz.antlr.CszzParser.MethodDeclContext;
+import cszz.antlr.CszzParser.StatContext;
 import cszz.antlr.CszzParserBaseVisitor;
 import cszz.ast.AnnotationNode;
 import cszz.ast.AssignExpr;
@@ -29,10 +30,8 @@ import cszz.ast.ParameterExpr;
 import cszz.ast.ParameterNode;
 import cszz.ast.StaticFieldExpr;
 import cszz.ast.ThisExpr;
-import cszz.core.GenericType;
 import cszz.core.MethodDescriptor;
 import cszz.core.ModifierConstant;
-import cszz.core.NullableKind;
 import cszz.core.ObjectType;
 import cszz.core.Type;
 import cszz.core.Types;
@@ -52,9 +51,9 @@ public class ClassNodeMetaBuilder extends CszzParserBaseVisitor<Object> {
     private final ClassNodeBuilder classNodeBuilder;
     private ClassNode thisClazz;
     
-    private Map<MethodNode,CszzParser.StatContext[]> methodStatsContexts = new HashMap();
+    private Map<MethodNode,CszzParser.StatContext[]> methodStatsContexts = new HashMap<MethodNode, StatContext[]>();
     
-    private Map<MethodNode,MethodDeclContext> methodContexts = new HashMap();
+    private Map<MethodNode,MethodDeclContext> methodContexts = new HashMap<MethodNode, MethodDeclContext>();
     
     private MethodNode method;
     private boolean inScriptMode;
@@ -353,6 +352,4 @@ public class ClassNodeMetaBuilder extends CszzParserBaseVisitor<Object> {
                 diagnosisHandler, this.compilationUnit.getSource()
         );
     }
-
-
 }

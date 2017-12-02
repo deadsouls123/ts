@@ -175,7 +175,7 @@ public class AstBuilder extends AbstractParseTreeVisitor implements CszzParserVi
     
     private MethodNode method;
     
-    private VarTable<VarObject,Type> overrideTypes = new VarTable();
+    private VarTable<VarObject,Type> overrideTypes = new VarTable<VarObject, Type>();
     
     //TODO merge SemanticAnalyzer.assignedVars
     //private VarTable<VarObject,NullableKind> assignedNullables = new VarTable();
@@ -187,9 +187,9 @@ public class AstBuilder extends AbstractParseTreeVisitor implements CszzParserVi
             NULLSTATE_UNKNOWN = 2,
             NULLSTATE_NULLABLE = 3;
     
-    private VarTable<VarObject,Integer> nullState = new VarTable();
+    private VarTable<VarObject,Integer> nullState = new VarTable<VarObject, Integer>();
     
-    private VarTable<String,LocalVarNode> varTables = new VarTable();
+    private VarTable<String,LocalVarNode> varTables = new VarTable<String, LocalVarNode>();
     //private final HashMap<MethodNode,BlockStmtContext> methodBodys = new HashMap<>();
 
     @Nonnull
@@ -211,7 +211,7 @@ public class AstBuilder extends AbstractParseTreeVisitor implements CszzParserVi
     private final CompilationUnit compilationUnit;
     
     private void newOverrideTypeStack(){
-        overrideTypes = new VarTable(overrideTypes);
+        overrideTypes = new VarTable<VarObject, Type>(overrideTypes);
     }
     
     private void popOverrideTypeStack(){

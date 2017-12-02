@@ -11,7 +11,7 @@ public class FieldVisitor {
         Field field = obj.getClass().getField(name);
         return  field.get(obj);
     }
-    
+
     public static void set(Object obj,String name,Object value) throws IllegalAccessException, NoSuchFieldException{
         Field field = obj.getClass().getField(name);
         field.set(obj, value);

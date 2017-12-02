@@ -2,12 +2,8 @@ package cszz.runtime.dynamic;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import cszz.runtime.util.MethodSelector;
 
 /**
@@ -15,10 +11,11 @@ import cszz.runtime.util.MethodSelector;
  * 
  */
 public class MethodDispatcher {
-    
+
     private final static JavaMethodSelector methodSelector = new JavaMethodSelector();
-    
-    public static Class[] getObjectTypes(Object... objects){
+
+    @SuppressWarnings("rawtypes")
+	public static Class[] getObjectTypes(Object... objects){
         Class[] types = new Class[objects.length];
         for(int i=0;i<objects.length;i++){
             types[i] = objects[i].getClass();
@@ -26,7 +23,8 @@ public class MethodDispatcher {
         return types;
     }
     
-    public static Object invokeMethodExactly(Object obj,String method,Object[] args,String[] types) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+    @SuppressWarnings("rawtypes")
+	public static Object invokeMethodExactly(Object obj,String method,Object[] args,String[] types) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
         Class<? extends Object> clazz = obj.getClass();
         Class[] typeClasses = new Class[types.length];
         for(int i=0;i<types.length;i++){
@@ -49,6 +47,7 @@ public class MethodDispatcher {
    
 }
 
+@SuppressWarnings("rawtypes")
 class JavaMethodSelector extends MethodSelector<Method,Class>{
 
     @Override
@@ -60,9 +59,9 @@ class JavaMethodSelector extends MethodSelector<Method,Class>{
     protected Class[] getMethodParameterTypes(Method m) {
         return m.getParameterTypes();
     }
-    
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     protected boolean isMorePreciseType(Class actualType,Class candidate1, Class candidate2) {
         if(candidate1.equals(candidate2)) return false;
         if(candidate2.isAssignableFrom(candidate1)) return true;
@@ -70,7 +69,8 @@ class JavaMethodSelector extends MethodSelector<Method,Class>{
         return false;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     protected boolean isAssignableFrom(Class to, Class from) {
         //TODO handle boxing and unboxing
         return to.isAssignableFrom(from);
@@ -80,5 +80,5 @@ class JavaMethodSelector extends MethodSelector<Method,Class>{
     protected boolean equalsType(Class type1, Class type2) {
         return type1.equals(type2);
     }
-    
+
 }

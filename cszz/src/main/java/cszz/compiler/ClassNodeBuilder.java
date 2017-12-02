@@ -21,7 +21,7 @@ public class ClassNodeBuilder extends CszzParserBaseVisitor<Object> {
 
     private ClassNode thisClazz;
     
-    private Map<ClassNode,ParserRuleContext> defContext = new HashMap();
+    private Map<ClassNode,ParserRuleContext> defContext = new HashMap<ClassNode, ParserRuleContext>();
 
     private boolean inScriptMode = false;
     
@@ -64,11 +64,9 @@ public class ClassNodeBuilder extends CszzParserBaseVisitor<Object> {
             modifier |= Modifier.STATIC;
         }
         Token classKind = ctx.classKind;
-        boolean isInterface = false;
         if (classKind != null) {
             if (classKind.getText().equals("interface")) {
                 modifier |= Modifier.ABSTRACT | Modifier.INTERFACE;
-                isInterface = true;
             }
         }
         String classDefName;
@@ -101,14 +99,6 @@ public class ClassNodeBuilder extends CszzParserBaseVisitor<Object> {
         return null;
     }
 
-    private boolean isNonStaticInnerClass(ClassNode clazz) {
-        return clazz.enclosingClass != null && !Modifier.isStatic(clazz.modifier);
-    }
-
-    private boolean isDeclaringNonStaticInnerClass() {
-        return isNonStaticInnerClass(thisClazz);
-    }
-    
     public ClassNode getClassNode(){
         return topClass;
     }
@@ -126,5 +116,4 @@ public class ClassNodeBuilder extends CszzParserBaseVisitor<Object> {
                 this.compilationUnit.getCompileContext()
                 , diagnosisHandler, this.compilationUnit.getSource());
     }
-    
 }

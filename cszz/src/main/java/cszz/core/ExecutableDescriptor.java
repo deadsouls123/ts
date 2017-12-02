@@ -62,7 +62,7 @@ public abstract class ExecutableDescriptor {
     
     @Override
     public String toString() {
-        List<String> params = new ArrayList();
+        List<String> params = new ArrayList<String>();
         for(ParameterDescriptor p:getParameterDescriptors()){
             params.add(String.format("%s %s", p.getType(),p.getName()));
         }
@@ -77,6 +77,4 @@ public abstract class ExecutableDescriptor {
     public Type[] getExceptionTypes() {
         return exceptionTypes;
     }
-    
-    
 }
